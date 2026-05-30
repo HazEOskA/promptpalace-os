@@ -7,6 +7,14 @@ export type PromptCategory =
   | 'marketing'
   | 'solana'
   | 'ai-agent'
+  | 'content'
+  | 'automation'
+  | 'productivity'
+  | 'sales'
+  | 'seo'
+  | 'social-media'
+  | 'startups'
+  | 'career'
 
 export type PromptDifficulty = 'beginner' | 'intermediate' | 'advanced'
 
@@ -28,6 +36,21 @@ export interface Prompt {
   model: string
   whyTrending?: string
   bestFor?: string[]
+  // Extended fields
+  slug?: string
+  useCase?: string
+  authorUsername?: string
+  likes?: number
+  copies?: number
+  views?: number
+  trendScore?: number
+  featured?: boolean
+  agentReady?: boolean
+  builderTool?: boolean
+  modelCompatibility?: string[]
+  estimatedTime?: string
+  outputType?: string
+  updatedAt?: string
 }
 
 export const PROMPTS: Prompt[] = [
