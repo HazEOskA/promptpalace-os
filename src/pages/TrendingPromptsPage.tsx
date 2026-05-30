@@ -48,14 +48,22 @@ function DifficultyBadge({ level }: { level: Prompt['difficulty'] }) {
 
 function CategoryBadge({ category }: { category: PromptCategory }) {
   const map: Record<PromptCategory, { label: string; cls: string }> = {
-    coding:     { label: 'Coding',    cls: 'bg-cyan-900/30 text-cyan-400 border-cyan-500/20' },
-    writing:    { label: 'Content',   cls: 'bg-amber-900/30 text-amber-400 border-amber-500/20' },
-    business:   { label: 'Business',  cls: 'bg-amber-900/30 text-amber-400 border-amber-500/20' },
-    research:   { label: 'Research',  cls: 'bg-violet-900/40 text-violet-400 border-violet-500/20' },
-    design:     { label: 'Design',    cls: 'bg-pink-900/30 text-pink-400 border-pink-500/20' },
-    marketing:  { label: 'Marketing', cls: 'bg-rose-900/30 text-rose-400 border-rose-500/20' },
-    solana:     { label: 'Web3',      cls: 'bg-violet-900/40 text-violet-300 border-violet-500/25' },
-    'ai-agent': { label: 'Agents',    cls: 'bg-cyan-900/40 text-cyan-300 border-cyan-500/25' },
+    coding:       { label: 'Coding',       cls: 'bg-cyan-900/30 text-cyan-400 border-cyan-500/20' },
+    writing:      { label: 'Content',      cls: 'bg-amber-900/30 text-amber-400 border-amber-500/20' },
+    content:      { label: 'Content',      cls: 'bg-orange-900/30 text-orange-400 border-orange-500/20' },
+    business:     { label: 'Business',     cls: 'bg-amber-900/30 text-amber-400 border-amber-500/20' },
+    research:     { label: 'Research',     cls: 'bg-violet-900/40 text-violet-400 border-violet-500/20' },
+    design:       { label: 'Design',       cls: 'bg-pink-900/30 text-pink-400 border-pink-500/20' },
+    marketing:    { label: 'Marketing',    cls: 'bg-rose-900/30 text-rose-400 border-rose-500/20' },
+    solana:       { label: 'Web3',         cls: 'bg-violet-900/40 text-violet-300 border-violet-500/25' },
+    'ai-agent':   { label: 'Agents',       cls: 'bg-cyan-900/40 text-cyan-300 border-cyan-500/25' },
+    automation:   { label: 'Automation',   cls: 'bg-emerald-900/30 text-emerald-400 border-emerald-500/20' },
+    productivity: { label: 'Productivity', cls: 'bg-teal-900/30 text-teal-400 border-teal-500/20' },
+    sales:        { label: 'Sales',        cls: 'bg-emerald-900/40 text-emerald-300 border-emerald-500/25' },
+    seo:          { label: 'SEO',          cls: 'bg-amber-900/40 text-amber-300 border-amber-500/25' },
+    'social-media': { label: 'Social',     cls: 'bg-rose-900/40 text-rose-300 border-rose-500/25' },
+    startups:     { label: 'Startups',     cls: 'bg-orange-900/30 text-orange-300 border-orange-500/25' },
+    career:       { label: 'Career',       cls: 'bg-amber-900/40 text-amber-400 border-amber-500/30' },
   }
   const { label, cls } = map[category]
   return <span className={cn('pp-badge border', cls)}>{label}</span>
