@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { PROMPTS, type Prompt, type PromptCategory } from '../data/prompts'
 import { formatNumber, cn } from '../lib/utils'
 
@@ -302,6 +302,7 @@ export default function TrendingPromptsPage() {
   const [copiedId, setCopiedId]             = useState<string | null>(null)
   const [previewPrompt, setPreviewPrompt]   = useState<Prompt | null>(null)
   const [isLoading, setIsLoading]           = useState(true)
+  const copyTimeoutRef                      = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
     const t = setTimeout(() => setIsLoading(false), 700)
@@ -330,8 +331,9 @@ export default function TrendingPromptsPage() {
 
   const handleCopy = (p: Prompt) => {
     navigator.clipboard.writeText(p.content).catch(() => {})
+    if (copyTimeoutRef.current) clearTimeout(copyTimeoutRef.current)
     setCopiedId(p.id)
-    setTimeout(() => setCopiedId(null), 1800)
+    copyTimeoutRef.current = setTimeout(() => setCopiedId(null), 1800)
   }
 
   return (
@@ -379,7 +381,7 @@ export default function TrendingPromptsPage() {
       </section>
 
       {/* ── Sticky search + filters ──────────────────────────────────── */}
-      <div className="sticky top-0 z-20 -mx-1 px-1 pt-1 pb-4 bg-bg-base/95 backdrop-blur-md">
+      <div className="sticky top-0 z-20 -mx-4 px-4 md:-mx-6 md:px-6 pt-1 pb-4 bg-bg-base/95 backdrop-blur-md">
         {/* Search bar */}
         <div className="relative mb-3">
           <span className="absolute left-4 top-1/2 -translate-y-1/2 text-text-muted select-none pointer-events-none text-base">
