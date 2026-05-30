@@ -9,18 +9,68 @@ interface NavItem {
   badgeColor?: string
 }
 
-const NAV_ITEMS: NavItem[] = [
+const PRIMARY_NAV: NavItem[] = [
   { to: '/', icon: '⬡', label: 'Dashboard' },
-  { to: '/prompts', icon: '◈', label: 'Prompt Library', badge: '10', badgeColor: 'bg-violet-500/20 text-violet-400' },
   { to: '/trending', icon: '↑', label: 'Trending', badge: 'HOT', badgeColor: 'bg-rose-500/20 text-rose-400' },
-  { to: '/builder', icon: '◎', label: 'Project Builder', badge: 'AI', badgeColor: 'bg-cyan-500/20 text-cyan-400' },
-  { to: '/workflows', icon: '⟳', label: 'Workflows', badge: '3', badgeColor: 'bg-amber-500/20 text-amber-400' },
+  { to: '/categories', icon: '◈', label: 'Categories' },
+  { to: '/stacks', icon: '⬟', label: 'Stacks', badge: '10', badgeColor: 'bg-violet-500/20 text-violet-400' },
+  { to: '/workflows', icon: '⟳', label: 'Workflows' },
+  { to: '/assistant', icon: '◉', label: 'Assistant', badge: 'AI', badgeColor: 'bg-cyan-500/20 text-cyan-400' },
+  { to: '/submit', icon: '⊹', label: 'Submit Prompt' },
+  { to: '/saved', icon: '★', label: 'Saved' },
+]
+
+const TOOLS_NAV: NavItem[] = [
+  { to: '/prompts', icon: '≡', label: 'Full Library' },
+  { to: '/builder', icon: '◎', label: 'Project Builder' },
   { to: '/context', icon: '⌥', label: 'Context Recovery' },
 ]
 
 interface SidebarProps {
   open: boolean
   onClose: () => void
+}
+
+function NavItems({ items, onClose }: { items: NavItem[]; onClose: () => void }) {
+  return (
+    <>
+      {items.map(item => (
+        <NavLink
+          key={item.to}
+          to={item.to}
+          end={item.to === '/'}
+          onClick={() => onClose()}
+          className={({ isActive }) =>
+            cn(
+              'flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-all duration-150 group',
+              isActive
+                ? 'bg-violet-600/20 text-violet-300 border border-violet-500/30'
+                : 'text-text-secondary hover:text-text-primary hover:bg-bg-elevated border border-transparent'
+            )
+          }
+        >
+          {({ isActive }) => (
+            <>
+              <span
+                className={cn(
+                  'text-base w-5 text-center transition-colors',
+                  isActive ? 'text-violet-400' : 'text-text-muted group-hover:text-text-secondary'
+                )}
+              >
+                {item.icon}
+              </span>
+              <span className="flex-1 font-body font-medium text-sm">{item.label}</span>
+              {item.badge && (
+                <span className={cn('text-[10px] font-mono font-semibold px-1.5 py-0.5 rounded', item.badgeColor)}>
+                  {item.badge}
+                </span>
+              )}
+            </>
+          )}
+        </NavLink>
+      ))}
+    </>
+  )
 }
 
 export default function Sidebar({ open, onClose }: SidebarProps) {
@@ -73,43 +123,12 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
         </div>
 
         {/* Navigation */}
-        <nav className="flex-1 px-3 py-4 space-y-0.5 overflow-y-auto">
+        <nav className="flex-1 px-3 py-4 space-y-0.5 overflow-y-auto scrollbar-none">
           <div className="pp-label mb-3 px-2">NAVIGATION</div>
-          {NAV_ITEMS.map(item => (
-            <NavLink
-              key={item.to}
-              to={item.to}
-              end={item.to === '/'}
-              onClick={() => onClose()}
-              className={({ isActive }) =>
-                cn(
-                  'flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-all duration-150 group',
-                  isActive
-                    ? 'bg-violet-600/20 text-violet-300 border border-violet-500/30'
-                    : 'text-text-secondary hover:text-text-primary hover:bg-bg-elevated border border-transparent'
-                )
-              }
-            >
-              {({ isActive }) => (
-                <>
-                  <span
-                    className={cn(
-                      'text-base w-5 text-center transition-colors',
-                      isActive ? 'text-violet-400' : 'text-text-muted group-hover:text-text-secondary'
-                    )}
-                  >
-                    {item.icon}
-                  </span>
-                  <span className="flex-1 font-body font-medium text-sm">{item.label}</span>
-                  {item.badge && (
-                    <span className={cn('text-[10px] font-mono font-semibold px-1.5 py-0.5 rounded', item.badgeColor)}>
-                      {item.badge}
-                    </span>
-                  )}
-                </>
-              )}
-            </NavLink>
-          ))}
+          <NavItems items={PRIMARY_NAV} onClose={onClose} />
+
+          <div className="pp-label mt-5 mb-3 px-2">TOOLS</div>
+          <NavItems items={TOOLS_NAV} onClose={onClose} />
         </nav>
 
         {/* Footer */}
