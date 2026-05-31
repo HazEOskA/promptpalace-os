@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from 'react-router-dom'
+﻿import { NavLink, useLocation } from 'react-router-dom'
 import { cn } from '../../lib/utils'
 
 interface NavItem {
@@ -10,20 +10,20 @@ interface NavItem {
 }
 
 const PRIMARY_NAV: NavItem[] = [
-  { to: '/', icon: '⬡', label: 'Dashboard' },
-  { to: '/trending', icon: '↑', label: 'Trending', badge: 'HOT', badgeColor: 'bg-rose-500/20 text-rose-400' },
-  { to: '/categories', icon: '◈', label: 'Categories' },
-  { to: '/stacks', icon: '⬟', label: 'Stacks', badge: '10', badgeColor: 'bg-violet-500/20 text-violet-400' },
-  { to: '/workflows', icon: '⟳', label: 'Workflows' },
-  { to: '/assistant', icon: '◉', label: 'Assistant', badge: 'AI', badgeColor: 'bg-cyan-500/20 text-cyan-400' },
-  { to: '/submit', icon: '⊹', label: 'Submit Prompt' },
-  { to: '/saved', icon: '★', label: 'Saved' },
+  { to: '/', icon: 'â¬¡', label: 'Dashboard' },
+  { to: '/trending', icon: 'â†‘', label: 'Trending', badge: 'HOT', badgeColor: 'bg-rose-500/20 text-rose-400' },
+  { to: '/categories', icon: 'â—ˆ', label: 'Categories' },
+  { to: '/stacks', icon: 'â¬Ÿ', label: 'Stacks', badge: '10', badgeColor: 'bg-violet-500/20 text-violet-400' },
+  { to: '/workflows', icon: 'âŸ³', label: 'Workflows' },
+  { to: '/assistant', icon: 'â—‰', label: 'Assistant', badge: 'AI', badgeColor: 'bg-cyan-500/20 text-cyan-400' },
+  { to: '/submit', icon: 'âŠ¹', label: 'Submit Prompt' },
+  { to: '/saved', icon: 'â˜…', label: 'Saved' },
 ]
 
 const TOOLS_NAV: NavItem[] = [
-  { to: '/prompts', icon: '≡', label: 'Full Library' },
-  { to: '/builder', icon: '◎', label: 'Project Builder' },
-  { to: '/context', icon: '⌥', label: 'Context Recovery' },
+  { to: '/prompts', icon: 'â‰¡', label: 'Full Library' },
+  { to: '/builder', icon: 'â—Ž', label: 'Project Builder' },
+  { to: '/context', icon: 'âŒ¥', label: 'Context Recovery' },
 ]
 
 interface SidebarProps {
@@ -113,12 +113,12 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
         <div className="px-4 py-3 border-b border-border">
           <div className="flex items-center gap-2 text-xs">
             <div className="glow-dot" />
-            <span className="font-mono text-emerald-400">SYSTEM ACTIVE</span>
+            <span className="font-mono text-emerald-400">PROMPTPALACE READY</span>
           </div>
           <div className="mt-1.5 flex items-center gap-1.5 text-[10px] font-mono text-text-muted">
-            <span className="step-0">STEP 0</span>
-            <span>→</span>
-            <span className="text-violet-400">WOLF Protocol</span>
+            <span className="step-0">START</span>
+            <span>â†’</span>
+            <span className="text-violet-400">Prompt Packs Ready</span>
           </div>
         </div>
 
@@ -148,3 +148,5 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
     </>
   )
 }
+
+

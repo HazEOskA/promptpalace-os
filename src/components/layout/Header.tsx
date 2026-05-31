@@ -1,16 +1,16 @@
-import { useLocation } from 'react-router-dom'
+﻿import { useLocation } from 'react-router-dom'
 
 interface HeaderProps {
   onMenuToggle: () => void
 }
 
 const PAGE_META: Record<string, { title: string; subtitle: string }> = {
-  '/': { title: 'Dashboard', subtitle: 'AI OS — Execution Workspace' },
+  '/': { title: 'Dashboard', subtitle: 'AI OS â€” Execution Workspace' },
   '/prompts': { title: 'Prompt Library', subtitle: 'Browse & deploy production prompts' },
   '/trending': { title: 'Trending Prompts', subtitle: 'Top performers ranked by usage & saves' },
-  '/builder': { title: 'Project Builder Bot', subtitle: 'AI-powered project execution engine' },
+  '/builder': { title: 'Project Builder Bot', subtitle: 'Turn an idea into a ready-to-use AI prompt pack' },
   '/workflows': { title: 'Workflow Generator', subtitle: 'Assemble multi-step AI workflows' },
-  '/context': { title: 'Context Recovery', subtitle: 'Step 0 — Last 5 Message Lock & Continuity' },
+  '/context': { title: 'Context Recovery', subtitle: 'Step 0 â€” Last 5 Message Lock & Continuity' },
 }
 
 export default function Header({ onMenuToggle }: HeaderProps) {
@@ -51,21 +51,23 @@ export default function Header({ onMenuToggle }: HeaderProps) {
 
         {/* Execution step indicator */}
         <div className="hidden sm:flex items-center gap-1.5 bg-bg-elevated border border-border rounded-lg px-3 py-1.5">
-          <span className="step-0">S0</span>
-          <span className="text-text-muted text-xs">→</span>
-          <span className="step-05">S0.5</span>
-          <span className="text-text-muted text-xs">→</span>
-          <span className="step-1">S1</span>
-          <span className="text-text-muted text-xs">→</span>
-          <span className="step-2">S2</span>
+          <span className="step-0">FIND</span>
+          <span className="text-text-muted text-xs">â†’</span>
+          <span className="step-05">COPY</span>
+          <span className="text-text-muted text-xs">â†’</span>
+          <span className="step-1">ADAPT</span>
+          <span className="text-text-muted text-xs">â†’</span>
+          <span className="step-2">RUN</span>
         </div>
 
         {/* Quick action */}
         <button className="pp-btn-primary text-xs py-1.5 px-3 hidden sm:flex">
-          <span>⟳</span>
-          <span>New Session</span>
+          <span>âŸ³</span>
+          <span>Start Flow</span>
         </button>
       </div>
     </header>
   )
 }
+
+

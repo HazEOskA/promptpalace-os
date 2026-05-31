@@ -1,4 +1,4 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, CheckCircle2, Copy, GitBranch, Sparkles, Zap } from 'lucide-react'
 import { PROMPTS } from '../data/prompts'
@@ -8,55 +8,55 @@ import { SKILLS } from '../data/skills'
 import { formatNumber, cn } from '../lib/utils'
 
 const STATS = [
-  { label: 'Total Prompts', value: ALL_PROMPTS.length.toString(), delta: 'Production-ready', color: 'violet', icon: '◈' },
-  { label: 'Categories', value: '20', delta: 'All domains', color: 'cyan', icon: '⬟' },
-  { label: 'Active Skills', value: '4', delta: 'of 8 loaded', color: 'amber', icon: '⚡' },
-  { label: 'Workflow Templates', value: '3', delta: 'Ready to use', color: 'emerald', icon: '⟳' },
+  { label: 'Total Prompts', value: ALL_PROMPTS.length.toString(), delta: 'Production-ready', color: 'violet', icon: 'â—ˆ' },
+  { label: 'Categories', value: '20', delta: 'All domains', color: 'cyan', icon: 'â¬Ÿ' },
+  { label: 'Active Skills', value: '4', delta: 'of 8 loaded', color: 'amber', icon: 'âš¡' },
+  { label: 'Workflow Templates', value: '3', delta: 'Ready to use', color: 'emerald', icon: 'âŸ³' },
 ]
 
 const QUICK_CATEGORIES = [
   { id: 'coding',      label: 'Coding',      icon: '{ }', color: 'text-cyan-400',   border: 'hover:border-cyan-500/40' },
-  { id: 'writing',     label: 'Writing',     icon: '✍',  color: 'text-pink-400',   border: 'hover:border-pink-500/40' },
-  { id: 'marketing',   label: 'Marketing',   icon: '↗',  color: 'text-rose-400',   border: 'hover:border-rose-500/40' },
-  { id: 'ai-personas', label: 'AI Personas', icon: '⬡',  color: 'text-violet-400', border: 'hover:border-violet-500/40' },
-  { id: 'creative',    label: 'Creative',    icon: '✦',  color: 'text-orange-400', border: 'hover:border-orange-500/40' },
-  { id: 'analysis',    label: 'Analysis',    icon: '⊟',  color: 'text-blue-400',   border: 'hover:border-blue-500/40' },
-  { id: 'business',    label: 'Business',    icon: '◆',  color: 'text-amber-400',  border: 'hover:border-amber-500/40' },
-  { id: 'learning',    label: 'Learning',    icon: '◎',  color: 'text-teal-400',   border: 'hover:border-teal-500/40' },
+  { id: 'writing',     label: 'Writing',     icon: 'âœ',  color: 'text-pink-400',   border: 'hover:border-pink-500/40' },
+  { id: 'marketing',   label: 'Marketing',   icon: 'â†—',  color: 'text-rose-400',   border: 'hover:border-rose-500/40' },
+  { id: 'ai-personas', label: 'AI Personas', icon: 'â¬¡',  color: 'text-violet-400', border: 'hover:border-violet-500/40' },
+  { id: 'creative',    label: 'Creative',    icon: 'âœ¦',  color: 'text-orange-400', border: 'hover:border-orange-500/40' },
+  { id: 'analysis',    label: 'Analysis',    icon: 'âŠŸ',  color: 'text-blue-400',   border: 'hover:border-blue-500/40' },
+  { id: 'business',    label: 'Business',    icon: 'â—†',  color: 'text-amber-400',  border: 'hover:border-amber-500/40' },
+  { id: 'learning',    label: 'Learning',    icon: 'â—Ž',  color: 'text-teal-400',   border: 'hover:border-teal-500/40' },
 ]
 
 const STEP_CARDS = [
   {
-    step: 'STEP 0',
-    label: 'Context Recovery',
-    desc: 'Scan last 5 messages. Identify active project, last step, blockers, and execution mode.',
+    step: 'START',
+    label: 'Find the Right Prompt',
+    desc: 'Browse trending and categorized prompts for your task.',
     status: 'DONE',
     statusColor: 'text-emerald-400',
     cls: 'step-0',
     link: '/context',
   },
   {
-    step: 'STEP 0.5',
-    label: 'Workspace Detection',
-    desc: 'Detect active workspace, framework, open files, and build system.',
+    step: 'GUIDE',
+    label: 'Understand the Use Case',
+    desc: 'Check the description, model fit, difficulty, tags, and expected output.',
     status: 'DONE',
     statusColor: 'text-emerald-400',
     cls: 'step-05',
     link: '/context',
   },
   {
-    step: 'STEP 1',
-    label: 'Execution Continuity',
-    desc: 'Resume from last checkpoint. Initialize new scaffold if none found.',
+    step: 'COPY',
+    label: 'Copy and Customize',
+    desc: 'Copy the prompt and replace placeholders with your own context.',
     status: 'READY',
     statusColor: 'text-amber-400',
     cls: 'step-1',
     link: '/builder',
   },
   {
-    step: 'STEP 2',
-    label: 'Build / Execute',
-    desc: 'Execute current task with context-aware generation and skill routing.',
+    step: 'RUN',
+    label: 'Run in Your AI Tool',
+    desc: 'Paste into ChatGPT, Claude, Gemini, Perplexity, or your preferred LLM.',
     status: 'WAITING',
     statusColor: 'text-text-muted',
     cls: 'step-2',
@@ -202,7 +202,7 @@ export default function Dashboard() {
         <div className="flex items-center justify-between mb-3">
           <div className="pp-section-title">Browse by Category</div>
           <Link to="/prompts" className="text-xs font-mono text-violet-400 hover:text-violet-300 transition-colors">
-            Full library ({ALL_PROMPTS.length} prompts) →
+            Full library ({ALL_PROMPTS.length} prompts) â†’
           </Link>
         </div>
         <div className="grid grid-cols-4 sm:grid-cols-8 gap-2">
@@ -230,25 +230,25 @@ export default function Dashboard() {
           <div className="flex-1">
             <div className="flex items-center gap-2 mb-1">
               <span className="step-0">STEP 0</span>
-              <span className="text-text-muted text-xs font-mono">→ CONTEXT RECOVERED</span>
+              <span className="text-text-muted text-xs font-mono">â†’ CONTEXT RECOVERED</span>
               <div className="glow-dot" />
             </div>
             <h2 className="text-xl md:text-2xl font-display font-bold text-text-primary">
-              Welcome back to <span className="text-gradient-violet">WOLF Protocol</span>
+              Build faster with <span className="text-gradient-violet">PromptPalace</span>
             </h2>
             <p className="text-sm text-text-secondary mt-1 font-body">
-              Last session: Metaplex metadata upload — Step 2 in progress.
-              Framework: <span className="text-violet-400 font-mono">TypeScript + Vite</span>
+              Last session: Metaplex metadata upload â€” Step 2 in progress.
+              Works with <span className="text-violet-400 font-mono">ChatGPT, Claude, Gemini, Perplexity</span>
             </p>
           </div>
           <div className="flex gap-2">
             <Link to="/builder" className="pp-btn-primary text-sm">
-              <span>◎</span>
-              <span>Resume Build</span>
+              <span>â—Ž</span>
+              <span>Open Builder</span>
             </Link>
             <Link to="/context" className="pp-btn-secondary text-sm">
-              <span>⌥</span>
-              <span>Context</span>
+              <span>âŒ¥</span>
+              <span>How It Works</span>
             </Link>
           </div>
         </div>
@@ -272,7 +272,7 @@ export default function Dashboard() {
 
       {/* AI OS Steps */}
       <div>
-        <div className="pp-label mb-3">AI OS EXECUTION PROTOCOL</div>
+        <div className="pp-label mb-3">PROMPTPALACE START FLOW</div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {STEP_CARDS.map(card => (
             <Link
@@ -301,7 +301,7 @@ export default function Dashboard() {
           <div className="flex items-center justify-between mb-3">
             <div className="pp-section-title">Trending Prompts</div>
             <Link to="/trending" className="text-xs font-mono text-violet-400 hover:text-violet-300 transition-colors">
-              View all →
+              View all â†’
             </Link>
           </div>
           <div className="space-y-2">
@@ -310,13 +310,13 @@ export default function Dashboard() {
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-1">
                     <span className="pp-badge-violet">{p.category}</span>
-                    <span className="text-xs font-mono text-rose-400">🔥 {p.trendingScore}</span>
+                    <span className="text-xs font-mono text-rose-400">ðŸ”¥ {p.trendingScore}</span>
                   </div>
                   <div className="text-sm font-display font-semibold text-text-primary line-clamp-1">{p.title}</div>
                   <p className="text-xs text-text-secondary mt-0.5 line-clamp-2 font-body">{p.description}</p>
                   <div className="flex items-center gap-3 mt-2 text-xs font-mono text-text-muted">
-                    <span>↑ {formatNumber(p.uses)} uses</span>
-                    <span>★ {formatNumber(p.saves)} saves</span>
+                    <span>â†‘ {formatNumber(p.uses)} uses</span>
+                    <span>â˜… {formatNumber(p.saves)} saves</span>
                     <span className="pp-badge-cyan">{p.model}</span>
                   </div>
                 </div>
@@ -324,7 +324,7 @@ export default function Dashboard() {
                   onClick={() => handleCopy(p.id, p.content)}
                   className="shrink-0 text-xs font-mono px-3 py-1.5 rounded-lg border transition-all duration-150 border-border hover:border-violet-500/50 text-text-muted hover:text-violet-400"
                 >
-                  {copiedId === p.id ? '✓ Copied' : 'Copy'}
+                  {copiedId === p.id ? 'âœ“ Copied' : 'Copy'}
                 </button>
               </div>
             ))}
@@ -339,7 +339,7 @@ export default function Dashboard() {
             <div className="flex items-center justify-between mb-3">
               <div className="pp-section-title">Active Skills</div>
               <Link to="/builder" className="text-xs font-mono text-cyan-400 hover:text-cyan-300 transition-colors">
-                Manage →
+                Manage â†’
               </Link>
             </div>
             <div className="space-y-2">
@@ -348,7 +348,7 @@ export default function Dashboard() {
                   <span className="text-lg w-6 text-center">{skill.icon}</span>
                   <div className="flex-1 min-w-0">
                     <div className="text-xs font-body font-medium text-text-primary">{skill.name}</div>
-                    <div className="text-[10px] font-mono text-text-muted truncate">{skill.capabilities.slice(0, 3).join(' · ')}</div>
+                    <div className="text-[10px] font-mono text-text-muted truncate">{skill.capabilities.slice(0, 3).join(' Â· ')}</div>
                   </div>
                   <div className="flex gap-0.5">
                     {Array.from({ length: 5 }).map((_, i) => (
@@ -368,7 +368,7 @@ export default function Dashboard() {
             <div className="flex items-center justify-between mb-3">
               <div className="pp-section-title">Quick Workflows</div>
               <Link to="/workflows" className="text-xs font-mono text-amber-400 hover:text-amber-300 transition-colors">
-                All →
+                All â†’
               </Link>
             </div>
             <div className="space-y-2">
@@ -378,10 +378,10 @@ export default function Dashboard() {
                   to="/workflows"
                   className="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-bg-elevated border border-border hover:border-border-strong hover:bg-bg-elevated/80 transition-all group"
                 >
-                  <span className="text-amber-400 text-lg">⟳</span>
+                  <span className="text-amber-400 text-lg">âŸ³</span>
                   <div className="flex-1 min-w-0">
                     <div className="text-xs font-body font-medium text-text-primary group-hover:text-amber-300 transition-colors line-clamp-1">{wf.name}</div>
-                    <div className="text-[10px] font-mono text-text-muted">{wf.steps.length} steps · {formatNumber(wf.uses)} uses</div>
+                    <div className="text-[10px] font-mono text-text-muted">{wf.steps.length} steps Â· {formatNumber(wf.uses)} uses</div>
                   </div>
                 </Link>
               ))}
@@ -392,3 +392,4 @@ export default function Dashboard() {
     </div>
   )
 }
+
