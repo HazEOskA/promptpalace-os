@@ -96,7 +96,16 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
-
+      {/* Start tutorial graphic */}
+      <div className="relative overflow-hidden rounded-xl border border-violet-500/20 bg-bg-surface p-3 md:p-4">
+        <div className="absolute inset-0 bg-violet-glow opacity-20 pointer-events-none" />
+        <img
+          src="/promptpalace-start-tutorial.png"
+          alt="PromptPalace OS tutorial showing how to discover prompts, build workflows, use stacks, and execute faster"
+          className="relative w-full rounded-lg border border-border object-cover shadow-2xl"
+          loading="eager"
+        />
+      </div>
       {/* Stats grid */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
         {STATS.map(stat => (
