@@ -1,15 +1,25 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { PROMPTS } from '../data/prompts'
+import { ALL_PROMPTS } from '../data/index'
 import { WORKFLOW_TEMPLATES } from '../data/workflows'
 import { SKILLS } from '../data/skills'
 import { formatNumber } from '../lib/utils'
 
 const STATS = [
-  { label: 'Total Prompts', value: '10', delta: '+3 this week', color: 'violet', icon: '◈' },
-  { label: 'Workflow Templates', value: '3', delta: 'Active', color: 'cyan', icon: '⟳' },
+  { label: 'Total Prompts', value: ALL_PROMPTS.length.toString(), delta: 'Production-ready', color: 'violet', icon: '◈' },
+  { label: 'Categories', value: '20', delta: 'All domains', color: 'cyan', icon: '⬟' },
   { label: 'Active Skills', value: '4', delta: 'of 8 loaded', color: 'amber', icon: '⚡' },
-  { label: 'Sessions Today', value: '7', delta: '2h 14m active', color: 'emerald', icon: '◉' },
+  { label: 'Workflow Templates', value: '3', delta: 'Ready to use', color: 'emerald', icon: '⟳' },
+]
+
+const QUICK_CATEGORIES = [
+  { id: 'coding', label: 'Coding', icon: '{ }', color: 'text-cyan-400', path: '/prompts' },
+  { id: 'writing', label: 'Writing', icon: '✍', color: 'text-pink-400', path: '/prompts' },
+  { id: 'marketing', label: 'Marketing', icon: '↗', color: 'text-rose-400', path: '/prompts' },
+  { id: 'ai-personas', label: 'AI Personas', icon: '⬡', color: 'text-violet-400', path: '/prompts' },
+  { id: 'creative', label: 'Creative', icon: '✦', color: 'text-orange-400', path: '/prompts' },
+  { id: 'analysis', label: 'Analysis', icon: '⊟', color: 'text-blue-400', path: '/prompts' },
 ]
 
 const STEP_CARDS = [
@@ -64,6 +74,60 @@ export default function Dashboard() {
 
   return (
     <div className="max-w-7xl mx-auto space-y-6 animate-slide-up">
+
+      {/* What is PromptPalace — beginner section */}
+      <div className="relative overflow-hidden rounded-xl border border-cyan-500/20 bg-bg-surface p-5 md:p-6">
+        <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ background: 'radial-gradient(ellipse at top left, rgba(6,182,212,0.3), transparent 60%)' }} />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
+        <div className="relative">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-[10px] font-mono bg-cyan-900/30 text-cyan-400 border border-cyan-500/30 px-2 py-0.5 rounded">NEW TO PROMPTPALACE?</span>
+          </div>
+          <h2 className="text-lg md:text-xl font-display font-bold text-text-primary mb-1">
+            What is <span className="text-gradient-cyan">PromptPalace</span>?
+          </h2>
+          <p className="text-sm text-text-secondary font-body leading-relaxed max-w-2xl mb-4">
+            PromptPalace is a curated library of <span className="text-text-primary font-semibold">{ALL_PROMPTS.length}+ production-ready AI prompts</span> — organized by category,
+            difficulty, and use case. Each prompt is a ready-to-use template with{' '}
+            <span className="text-cyan-400 font-mono">[BRACKETED]</span> variables you fill in.
+            Paste into ChatGPT, Claude, or any AI tool and get professional results in seconds.
+          </p>
+          <div className="flex flex-wrap gap-2">
+            <Link to="/prompts" className="pp-btn-primary text-xs">
+              <span>◈</span>
+              <span>Browse Library</span>
+            </Link>
+            <Link to="/trending" className="pp-btn-secondary text-xs">
+              <span>🔥</span>
+              <span>Trending Now</span>
+            </Link>
+            <Link to="/categories" className="pp-btn-secondary text-xs">
+              <span>⬟</span>
+              <span>All Categories</span>
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Quick category shortcuts */}
+      <div>
+        <div className="flex items-center justify-between mb-3">
+          <div className="pp-section-title">Popular Categories</div>
+          <Link to="/prompts" className="text-xs font-mono text-violet-400 hover:text-violet-300 transition-colors">Browse all →</Link>
+        </div>
+        <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
+          {QUICK_CATEGORIES.map(cat => (
+            <Link
+              key={cat.id}
+              to={cat.path}
+              className="flex flex-col items-center gap-1.5 p-3 rounded-lg bg-bg-elevated border border-border hover:border-border-strong transition-all group text-center"
+            >
+              <span className={`text-xl ${cat.color} group-hover:scale-110 transition-transform`}>{cat.icon}</span>
+              <span className="text-[11px] font-body font-medium text-text-secondary group-hover:text-text-primary transition-colors">{cat.label}</span>
+            </Link>
+          ))}
+        </div>
+      </div>
 
       {/* Hero bar */}
       <div className="relative overflow-hidden rounded-xl border border-violet-500/20 bg-bg-surface p-5 md:p-6">

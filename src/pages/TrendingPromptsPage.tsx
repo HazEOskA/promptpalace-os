@@ -64,6 +64,10 @@ function CategoryBadge({ category }: { category: PromptCategory }) {
     'social-media': { label: 'Social',     cls: 'bg-rose-900/40 text-rose-300 border-rose-500/25' },
     startups:     { label: 'Startups',     cls: 'bg-orange-900/30 text-orange-300 border-orange-500/25' },
     career:       { label: 'Career',       cls: 'bg-amber-900/40 text-amber-400 border-amber-500/30' },
+    analysis:     { label: 'Analysis',     cls: 'bg-blue-900/40 text-blue-400 border-blue-500/30' },
+    learning:     { label: 'Learning',     cls: 'bg-teal-900/40 text-teal-300 border-teal-500/25' },
+    creative:     { label: 'Creative',     cls: 'bg-orange-900/40 text-orange-300 border-orange-500/25' },
+    'ai-personas': { label: 'Personas',   cls: 'bg-violet-900/40 text-violet-300 border-violet-500/25' },
   }
   const { label, cls } = map[category]
   return <span className={cn('pp-badge border', cls)}>{label}</span>

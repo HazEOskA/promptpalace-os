@@ -15,6 +15,10 @@ export type PromptCategory =
   | 'social-media'
   | 'startups'
   | 'career'
+  | 'analysis'
+  | 'learning'
+  | 'creative'
+  | 'ai-personas'
 
 export type PromptDifficulty = 'beginner' | 'intermediate' | 'advanced'
 

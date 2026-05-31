@@ -14,6 +14,8 @@ import { SEO_PROMPTS } from './prompt-library-seo'
 import { SOCIAL_MEDIA_PROMPTS } from './prompt-library-social-media'
 import { STARTUPS_PROMPTS } from './prompt-library-startups'
 import { CAREER_PROMPTS } from './prompt-library-career'
+import { WRITING_PROMPTS } from './prompt-library-writing'
+import { ANALYSIS_PROMPTS } from './prompt-library-analysis'
 
 export type { Prompt, PromptCategory } from './prompts'
 export { PROMPTS } from './prompts'
@@ -38,6 +40,8 @@ export const ALL_PROMPTS = [
   ...SOCIAL_MEDIA_PROMPTS,
   ...STARTUPS_PROMPTS,
   ...CAREER_PROMPTS,
+  ...WRITING_PROMPTS,
+  ...ANALYSIS_PROMPTS,
 ]
 
 export function getPromptById(id: string) {
