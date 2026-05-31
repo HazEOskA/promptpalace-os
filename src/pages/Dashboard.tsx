@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { ArrowRight, CheckCircle2, Copy, GitBranch, Sparkles, Zap } from 'lucide-react'
 import { PROMPTS } from '../data/prompts'
 import { WORKFLOW_TEMPLATES } from '../data/workflows'
 import { SKILLS } from '../data/skills'
@@ -65,7 +66,125 @@ export default function Dashboard() {
   return (
     <div className="max-w-7xl mx-auto space-y-6 animate-slide-up">
 
-      {/* Hero bar */}
+      {/* Mission Control Banner */}
+      <section className="relative overflow-hidden rounded-xl border border-violet-500/25 bg-bg-surface p-5 shadow-card md:p-7 lg:p-8">
+        <div className="absolute inset-0 bg-grid-pattern bg-grid opacity-60 pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(139,92,246,0.22),transparent_32%),radial-gradient(circle_at_85%_15%,rgba(6,182,212,0.14),transparent_28%)] pointer-events-none" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-violet-400/80 to-transparent" />
+
+        <div className="relative grid grid-cols-1 gap-7 lg:grid-cols-[minmax(0,3fr)_minmax(320px,2fr)] lg:items-center">
+          <div className="min-w-0">
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-500/20 bg-cyan-900/30 px-3 py-1 text-xs font-mono uppercase tracking-widest text-cyan-400">
+              <Sparkles className="h-3.5 w-3.5" />
+              Mission Control
+            </div>
+
+            <h1 className="max-w-3xl text-3xl font-display font-bold leading-tight text-text-primary sm:text-4xl lg:text-5xl">
+              Your AI Prompt Command Center.
+            </h1>
+            <p className="mt-4 max-w-2xl text-sm leading-6 text-text-secondary sm:text-base">
+              Stop guessing prompts. Deploy battle-tested AI workflows, ready-to-use prompt packs, and curated automation frameworks designed for builders, creators, and scale.
+            </p>
+
+            <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+              <Link to="/trending" className="pp-btn-primary w-full justify-center sm:w-auto">
+                <Zap className="h-4 w-4" />
+                <span>Explore Trending Packs</span>
+              </Link>
+              <Link to="/workflows" className="pp-btn-secondary w-full justify-center sm:w-auto">
+                <GitBranch className="h-4 w-4" />
+                <span>View Architecture</span>
+              </Link>
+            </div>
+
+            <p className="mt-3 text-xs font-mono text-text-muted">
+              No setup required. Copy, adjust, and dominate your AI workflows.
+            </p>
+
+            <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
+              {[
+                ['01', 'Select Target', 'Pick your business goal or AI tool.'],
+                ['02', 'Inject Context', 'Customize system variables instantly.'],
+                ['03', 'Execute & Scale', 'Copy with 1-click and get elite results.'],
+              ].map(([step, title, desc]) => (
+                <div key={step} className="rounded-lg border border-border bg-bg-elevated/80 p-3">
+                  <div className="mb-2 flex items-center gap-2">
+                    <span className="font-mono text-xs font-semibold text-cyan-400">[{step}]</span>
+                    <span className="h-px flex-1 bg-border" />
+                  </div>
+                  <div className="text-sm font-display font-semibold text-text-primary">{title}</div>
+                  <p className="mt-1 text-xs leading-relaxed text-text-secondary">{desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="relative min-w-0">
+            <div className="rounded-xl border border-border-strong bg-bg-elevated/90 p-3 shadow-violet">
+              <div className="mb-3 flex items-center justify-between">
+                <div>
+                  <div className="text-xs font-mono uppercase tracking-widest text-text-muted">Workflow Chain</div>
+                  <div className="text-sm font-display font-semibold text-text-primary">Launch Sequence</div>
+                </div>
+                <div className="flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-900/40 px-2 py-1 text-[10px] font-mono text-emerald-400">
+                  <CheckCircle2 className="h-3 w-3" />
+                  READY
+                </div>
+              </div>
+
+              <div className="space-y-2.5">
+                <div className="rounded-lg border border-violet-500/25 bg-bg-surface p-3">
+                  <div className="mb-2 flex items-center justify-between gap-3">
+                    <div className="text-sm font-display font-semibold text-text-primary">Category Pack</div>
+                    <span className="pp-badge-violet">Trending</span>
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {['SaaS', 'Growth', 'Coding'].map(tag => (
+                      <span key={tag} className="rounded-md border border-cyan-500/20 bg-cyan-900/30 px-2 py-1 text-[10px] font-mono text-cyan-400">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="flex justify-center text-text-muted">
+                  <ArrowRight className="h-4 w-4 rotate-90" />
+                </div>
+
+                <div className="rounded-lg border border-cyan-500/20 bg-bg-surface p-3">
+                  <div className="mb-2 flex items-center justify-between gap-3">
+                    <div className="text-sm font-display font-semibold text-text-primary">Prompt Payload</div>
+                    <div className="inline-flex items-center gap-1 rounded-md border border-border bg-bg-elevated px-2 py-1 text-[10px] font-mono text-text-secondary">
+                      <Copy className="h-3 w-3" />
+                      Copy
+                    </div>
+                  </div>
+                  <div className="rounded-md bg-bg-base/80 p-2 font-mono text-[11px] leading-relaxed text-text-secondary">
+                    Build a launch plan for <span className="text-violet-400">{'{{target_audience}}'}</span> using <span className="text-cyan-400">{'{{product_core}}'}</span> as the conversion engine.
+                  </div>
+                </div>
+
+                <div className="flex justify-center text-text-muted">
+                  <ArrowRight className="h-4 w-4 rotate-90" />
+                </div>
+
+                <div className="rounded-lg border border-emerald-500/20 bg-emerald-900/10 p-3">
+                  <div className="mb-2 flex items-center gap-2">
+                    <div className="glow-dot" />
+                    <div className="text-sm font-display font-semibold text-emerald-400">Output Ready</div>
+                  </div>
+                  <div className="space-y-1.5">
+                    <div className="h-2 rounded-full bg-emerald-400/60" />
+                    <div className="h-2 w-5/6 rounded-full bg-cyan-400/30" />
+                    <div className="h-2 w-2/3 rounded-full bg-violet-400/30" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* Previous session bar */}
       <div className="relative overflow-hidden rounded-xl border border-violet-500/20 bg-bg-surface p-5 md:p-6">
         <div className="absolute inset-0 bg-violet-glow opacity-30 pointer-events-none" />
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-violet-500/60 to-transparent" />
