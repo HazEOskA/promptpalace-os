@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { ArrowRight, CheckCircle2, Copy, GitBranch, Sparkles, Zap } from 'lucide-react'
 import { PROMPTS } from '../data/prompts'
 import { ALL_PROMPTS } from '../data/index'
 import { WORKFLOW_TEMPLATES } from '../data/workflows'
 import { SKILLS } from '../data/skills'
-import { formatNumber } from '../lib/utils'
+import { formatNumber, cn } from '../lib/utils'
 
 const STATS = [
   { label: 'Total Prompts', value: ALL_PROMPTS.length.toString(), delta: 'Production-ready', color: 'violet', icon: '◈' },
@@ -14,12 +15,14 @@ const STATS = [
 ]
 
 const QUICK_CATEGORIES = [
-  { id: 'coding', label: 'Coding', icon: '{ }', color: 'text-cyan-400', path: '/prompts' },
-  { id: 'writing', label: 'Writing', icon: '✍', color: 'text-pink-400', path: '/prompts' },
-  { id: 'marketing', label: 'Marketing', icon: '↗', color: 'text-rose-400', path: '/prompts' },
-  { id: 'ai-personas', label: 'AI Personas', icon: '⬡', color: 'text-violet-400', path: '/prompts' },
-  { id: 'creative', label: 'Creative', icon: '✦', color: 'text-orange-400', path: '/prompts' },
-  { id: 'analysis', label: 'Analysis', icon: '⊟', color: 'text-blue-400', path: '/prompts' },
+  { id: 'coding',      label: 'Coding',      icon: '{ }', color: 'text-cyan-400',   border: 'hover:border-cyan-500/40' },
+  { id: 'writing',     label: 'Writing',     icon: '✍',  color: 'text-pink-400',   border: 'hover:border-pink-500/40' },
+  { id: 'marketing',   label: 'Marketing',   icon: '↗',  color: 'text-rose-400',   border: 'hover:border-rose-500/40' },
+  { id: 'ai-personas', label: 'AI Personas', icon: '⬡',  color: 'text-violet-400', border: 'hover:border-violet-500/40' },
+  { id: 'creative',    label: 'Creative',    icon: '✦',  color: 'text-orange-400', border: 'hover:border-orange-500/40' },
+  { id: 'analysis',    label: 'Analysis',    icon: '⊟',  color: 'text-blue-400',   border: 'hover:border-blue-500/40' },
+  { id: 'business',    label: 'Business',    icon: '◆',  color: 'text-amber-400',  border: 'hover:border-amber-500/40' },
+  { id: 'learning',    label: 'Learning',    icon: '◎',  color: 'text-teal-400',   border: 'hover:border-teal-500/40' },
 ]
 
 const STEP_CARDS = [
@@ -75,61 +78,151 @@ export default function Dashboard() {
   return (
     <div className="max-w-7xl mx-auto space-y-6 animate-slide-up">
 
-      {/* What is PromptPalace — beginner section */}
-      <div className="relative overflow-hidden rounded-xl border border-cyan-500/20 bg-bg-surface p-5 md:p-6">
-        <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ background: 'radial-gradient(ellipse at top left, rgba(6,182,212,0.3), transparent 60%)' }} />
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
-        <div className="relative">
-          <div className="flex items-center gap-2 mb-2">
-            <span className="text-[10px] font-mono bg-cyan-900/30 text-cyan-400 border border-cyan-500/30 px-2 py-0.5 rounded">NEW TO PROMPTPALACE?</span>
+      {/* Mission Control Banner */}
+      <section className="relative overflow-hidden rounded-xl border border-violet-500/25 bg-bg-surface p-5 shadow-card md:p-7 lg:p-8">
+        <div className="absolute inset-0 bg-grid-pattern bg-grid opacity-60 pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(139,92,246,0.22),transparent_32%),radial-gradient(circle_at_85%_15%,rgba(6,182,212,0.14),transparent_28%)] pointer-events-none" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-violet-400/80 to-transparent" />
+
+        <div className="relative grid grid-cols-1 gap-7 lg:grid-cols-[minmax(0,3fr)_minmax(320px,2fr)] lg:items-center">
+          <div className="min-w-0">
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-500/20 bg-cyan-900/30 px-3 py-1 text-xs font-mono uppercase tracking-widest text-cyan-400">
+              <Sparkles className="h-3.5 w-3.5" />
+              Mission Control
+            </div>
+
+            <h1 className="max-w-3xl text-3xl font-display font-bold leading-tight text-text-primary sm:text-4xl lg:text-5xl">
+              Your AI Prompt Command Center.
+            </h1>
+            <p className="mt-4 max-w-2xl text-sm leading-6 text-text-secondary sm:text-base">
+              Stop guessing prompts. Deploy battle-tested AI workflows, ready-to-use prompt packs, and curated automation frameworks designed for builders, creators, and scale.
+            </p>
+
+            <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+              <Link to="/trending" className="pp-btn-primary w-full justify-center sm:w-auto">
+                <Zap className="h-4 w-4" />
+                <span>Explore Trending Packs</span>
+              </Link>
+              <Link to="/prompts" className="pp-btn-secondary w-full justify-center sm:w-auto">
+                <GitBranch className="h-4 w-4" />
+                <span>Browse Library</span>
+              </Link>
+            </div>
+
+            <p className="mt-3 text-xs font-mono text-text-muted">
+              No setup required. Copy, adjust, and dominate your AI workflows.
+            </p>
+
+            <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
+              {[
+                ['01', 'Browse & Search', 'Filter by category, difficulty, or keyword to find the right prompt.'],
+                ['02', 'Expand & Copy', 'Click any prompt to reveal the full text. Copy with one click.'],
+                ['03', 'Fill & Execute', 'Replace [BRACKETED] variables with your context and paste into any AI.'],
+              ].map(([step, title, desc]) => (
+                <div key={step} className="rounded-lg border border-border bg-bg-elevated/80 p-3">
+                  <div className="mb-2 flex items-center gap-2">
+                    <span className="font-mono text-xs font-semibold text-cyan-400">[{step}]</span>
+                    <span className="h-px flex-1 bg-border" />
+                  </div>
+                  <div className="text-sm font-display font-semibold text-text-primary">{title}</div>
+                  <p className="mt-1 text-xs leading-relaxed text-text-secondary">{desc}</p>
+                </div>
+              ))}
+            </div>
           </div>
-          <h2 className="text-lg md:text-xl font-display font-bold text-text-primary mb-1">
-            What is <span className="text-gradient-cyan">PromptPalace</span>?
-          </h2>
-          <p className="text-sm text-text-secondary font-body leading-relaxed max-w-2xl mb-4">
-            PromptPalace is a curated library of <span className="text-text-primary font-semibold">{ALL_PROMPTS.length}+ production-ready AI prompts</span> — organized by category,
-            difficulty, and use case. Each prompt is a ready-to-use template with{' '}
-            <span className="text-cyan-400 font-mono">[BRACKETED]</span> variables you fill in.
-            Paste into ChatGPT, Claude, or any AI tool and get professional results in seconds.
-          </p>
-          <div className="flex flex-wrap gap-2">
-            <Link to="/prompts" className="pp-btn-primary text-xs">
-              <span>◈</span>
-              <span>Browse Library</span>
-            </Link>
-            <Link to="/trending" className="pp-btn-secondary text-xs">
-              <span>🔥</span>
-              <span>Trending Now</span>
-            </Link>
-            <Link to="/categories" className="pp-btn-secondary text-xs">
-              <span>⬟</span>
-              <span>All Categories</span>
-            </Link>
+
+          <div className="relative min-w-0">
+            <div className="rounded-xl border border-border-strong bg-bg-elevated/90 p-3 shadow-violet">
+              <div className="mb-3 flex items-center justify-between">
+                <div>
+                  <div className="text-xs font-mono uppercase tracking-widest text-text-muted">Workflow Chain</div>
+                  <div className="text-sm font-display font-semibold text-text-primary">Launch Sequence</div>
+                </div>
+                <div className="flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-900/40 px-2 py-1 text-[10px] font-mono text-emerald-400">
+                  <CheckCircle2 className="h-3 w-3" />
+                  READY
+                </div>
+              </div>
+
+              <div className="space-y-2.5">
+                <div className="rounded-lg border border-violet-500/25 bg-bg-surface p-3">
+                  <div className="mb-2 flex items-center justify-between gap-3">
+                    <div className="text-sm font-display font-semibold text-text-primary">Category Pack</div>
+                    <span className="pp-badge-violet">Trending</span>
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {['SaaS', 'Growth', 'Coding'].map(tag => (
+                      <span key={tag} className="rounded-md border border-cyan-500/20 bg-cyan-900/30 px-2 py-1 text-[10px] font-mono text-cyan-400">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="flex justify-center text-text-muted">
+                  <ArrowRight className="h-4 w-4 rotate-90" />
+                </div>
+
+                <div className="rounded-lg border border-cyan-500/20 bg-bg-surface p-3">
+                  <div className="mb-2 flex items-center justify-between gap-3">
+                    <div className="text-sm font-display font-semibold text-text-primary">Prompt Payload</div>
+                    <div className="inline-flex items-center gap-1 rounded-md border border-border bg-bg-elevated px-2 py-1 text-[10px] font-mono text-text-secondary">
+                      <Copy className="h-3 w-3" />
+                      Copy
+                    </div>
+                  </div>
+                  <div className="rounded-md bg-bg-base/80 p-2 font-mono text-[11px] leading-relaxed text-text-secondary">
+                    Build a launch plan for <span className="text-violet-400">{'{{target_audience}}'}</span> using <span className="text-cyan-400">{'{{product_core}}'}</span> as the conversion engine.
+                  </div>
+                </div>
+
+                <div className="flex justify-center text-text-muted">
+                  <ArrowRight className="h-4 w-4 rotate-90" />
+                </div>
+
+                <div className="rounded-lg border border-emerald-500/20 bg-emerald-900/10 p-3">
+                  <div className="mb-2 flex items-center gap-2">
+                    <div className="glow-dot" />
+                    <div className="text-sm font-display font-semibold text-emerald-400">Output Ready</div>
+                  </div>
+                  <div className="space-y-1.5">
+                    <div className="h-2 rounded-full bg-emerald-400/60" />
+                    <div className="h-2 w-5/6 rounded-full bg-cyan-400/30" />
+                    <div className="h-2 w-2/3 rounded-full bg-violet-400/30" />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Quick category shortcuts */}
+      {/* Quick category browse */}
       <div>
         <div className="flex items-center justify-between mb-3">
-          <div className="pp-section-title">Popular Categories</div>
-          <Link to="/prompts" className="text-xs font-mono text-violet-400 hover:text-violet-300 transition-colors">Browse all →</Link>
+          <div className="pp-section-title">Browse by Category</div>
+          <Link to="/prompts" className="text-xs font-mono text-violet-400 hover:text-violet-300 transition-colors">
+            Full library ({ALL_PROMPTS.length} prompts) →
+          </Link>
         </div>
-        <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
+        <div className="grid grid-cols-4 sm:grid-cols-8 gap-2">
           {QUICK_CATEGORIES.map(cat => (
             <Link
               key={cat.id}
-              to={cat.path}
-              className="flex flex-col items-center gap-1.5 p-3 rounded-lg bg-bg-elevated border border-border hover:border-border-strong transition-all group text-center"
+              to="/prompts"
+              className={cn(
+                'flex flex-col items-center gap-1.5 p-3 rounded-lg bg-bg-elevated border border-border transition-all group text-center',
+                cat.border
+              )}
             >
-              <span className={`text-xl ${cat.color} group-hover:scale-110 transition-transform`}>{cat.icon}</span>
-              <span className="text-[11px] font-body font-medium text-text-secondary group-hover:text-text-primary transition-colors">{cat.label}</span>
+              <span className={`text-lg ${cat.color} group-hover:scale-110 transition-transform`}>{cat.icon}</span>
+              <span className="text-[10px] font-body font-medium text-text-secondary group-hover:text-text-primary transition-colors leading-tight">{cat.label}</span>
             </Link>
           ))}
         </div>
       </div>
 
-      {/* Hero bar */}
+      {/* Previous session bar */}
       <div className="relative overflow-hidden rounded-xl border border-violet-500/20 bg-bg-surface p-5 md:p-6">
         <div className="absolute inset-0 bg-violet-glow opacity-30 pointer-events-none" />
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-violet-500/60 to-transparent" />

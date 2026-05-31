@@ -16,6 +16,9 @@ import { STARTUPS_PROMPTS } from './prompt-library-startups'
 import { CAREER_PROMPTS } from './prompt-library-career'
 import { WRITING_PROMPTS } from './prompt-library-writing'
 import { ANALYSIS_PROMPTS } from './prompt-library-analysis'
+import { LEARNING_PROMPTS } from './prompt-library-learning'
+import { CREATIVE_PROMPTS } from './prompt-library-creative'
+import { AI_PERSONAS_PROMPTS } from './prompt-library-ai-personas'
 
 export type { Prompt, PromptCategory } from './prompts'
 export { PROMPTS } from './prompts'
@@ -42,6 +45,9 @@ export const ALL_PROMPTS = [
   ...CAREER_PROMPTS,
   ...WRITING_PROMPTS,
   ...ANALYSIS_PROMPTS,
+  ...LEARNING_PROMPTS,
+  ...CREATIVE_PROMPTS,
+  ...AI_PERSONAS_PROMPTS,
 ]
 
 export function getPromptById(id: string) {
