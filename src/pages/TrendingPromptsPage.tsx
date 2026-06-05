@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { PROMPTS, type Prompt, type PromptCategory } from '../data/prompts'
 import { formatNumber, cn } from '../lib/utils'
 
@@ -11,7 +12,7 @@ const FILTER_CATEGORIES = [
   { id: 'business',  label: 'Business' },
   { id: 'ai-agent',  label: 'Agents' },
   { id: 'design',    label: 'Design' },
-  { id: 'writing',   label: 'Content' },
+  { id: 'content',   label: 'Content' },
   { id: 'solana',    label: 'Web3' },
   { id: 'research',  label: 'Research' },
 ] as const
@@ -385,9 +386,9 @@ export default function TrendingPromptsPage() {
             >
               ↓ Explore Trending
             </a>
-            <button className="pp-btn-secondary min-h-[44px] text-sm sm:text-base px-6">
+            <Link to="/submit" className="pp-btn-secondary min-h-[44px] text-sm sm:text-base px-6">
               + Submit Prompt
-            </button>
+            </Link>
           </div>
         </div>
       </section>
