@@ -7,6 +7,17 @@ import { WORKFLOW_TEMPLATES } from '../data/workflows'
 import { SKILLS } from '../data/skills'
 import { formatNumber, cn } from '../lib/utils'
 
+const DISTRICTS = [
+  { slug: 'registry',  label: 'Agent Registry', icon: '◈', color: 'text-violet-400', border: 'hover:border-violet-500/40', to: '/registry' },
+  { slug: 'skills',    label: 'Skills Registry', icon: '⚡', color: 'text-amber-400',  border: 'hover:border-amber-500/40',  to: '/skills' },
+  { slug: 'plugins',   label: 'Plugins / MCP',   icon: '⬡', color: 'text-cyan-400',   border: 'hover:border-cyan-500/40',   to: '/plugins' },
+  { slug: 'workflows', label: 'Workflows',        icon: '⟳', color: 'text-orange-400', border: 'hover:border-orange-500/40', to: '/workflows' },
+  { slug: 'loop',      label: 'Loop Engine',      icon: '↺', color: 'text-rose-400',   border: 'hover:border-rose-500/40',   to: '/loop' },
+  { slug: 'prompts',   label: 'PromptPalace',     icon: '≡', color: 'text-blue-400',   border: 'hover:border-blue-500/40',   to: '/prompts' },
+  { slug: 'playbooks', label: 'Playbooks',        icon: '◎', color: 'text-teal-400',   border: 'hover:border-teal-500/40',   to: '/playbooks' },
+  { slug: 'n8n',       label: 'n8n Candidates',   icon: '⊹', color: 'text-pink-400',   border: 'hover:border-pink-500/40',   to: '/n8n' },
+]
+
 const STATS = [
   { label: 'Total Prompts', value: ALL_PROMPTS.length.toString(), delta: 'Production-ready', color: 'violet', icon: 'â—ˆ' },
   { label: 'Categories', value: '20', delta: 'All domains', color: 'cyan', icon: 'â¬Ÿ' },
@@ -95,13 +106,13 @@ export default function Dashboard() {
               Your AI Prompt Command Center.
             </h1>
             <p className="mt-4 max-w-2xl text-sm leading-6 text-text-secondary sm:text-base">
-              Stop guessing prompts. Deploy battle-tested AI workflows, ready-to-use prompt packs, and curated automation frameworks designed for builders, creators, and scale.
+              Stop guessing prompts. Deploy battle-tested AI workflows, ready-to-use execution modules, and curated automation frameworks designed for operators, builders, and scale.
             </p>
 
             <div className="mt-5 flex flex-col gap-3 sm:flex-row">
               <Link to="/trending" className="pp-btn-primary w-full justify-center sm:w-auto">
                 <Zap className="h-4 w-4" />
-                <span>Explore Trending Packs</span>
+                <span>Explore Trending</span>
               </Link>
               <Link to="/prompts" className="pp-btn-secondary w-full justify-center sm:w-auto">
                 <GitBranch className="h-4 w-4" />
@@ -147,7 +158,7 @@ export default function Dashboard() {
               <div className="space-y-2.5">
                 <div className="rounded-lg border border-violet-500/25 bg-bg-surface p-3">
                   <div className="mb-2 flex items-center justify-between gap-3">
-                    <div className="text-sm font-display font-semibold text-text-primary">Category Pack</div>
+                    <div className="text-sm font-display font-semibold text-text-primary">District Module</div>
                     <span className="pp-badge-violet">Trending</span>
                   </div>
                   <div className="flex flex-wrap gap-1.5">
@@ -222,6 +233,29 @@ export default function Dashboard() {
         </div>
       </div>
 
+      {/* District Modules */}
+      <div>
+        <div className="flex items-center justify-between mb-3">
+          <div className="pp-section-title">Districts</div>
+          <span className="text-xs font-mono text-text-muted">8 active modules</span>
+        </div>
+        <div className="grid grid-cols-4 sm:grid-cols-8 gap-2">
+          {DISTRICTS.map(d => (
+            <Link
+              key={d.slug}
+              to={d.to}
+              className={cn(
+                'flex flex-col items-center gap-1.5 p-3 rounded-lg bg-bg-elevated border border-border transition-all group text-center',
+                d.border
+              )}
+            >
+              <span className={`text-lg ${d.color} group-hover:scale-110 transition-transform`}>{d.icon}</span>
+              <span className="text-[10px] font-body font-medium text-text-secondary group-hover:text-text-primary transition-colors leading-tight">{d.label}</span>
+            </Link>
+          ))}
+        </div>
+      </div>
+
       {/* Previous session bar */}
       <div className="relative overflow-hidden rounded-xl border border-violet-500/20 bg-bg-surface p-5 md:p-6">
         <div className="absolute inset-0 bg-violet-glow opacity-30 pointer-events-none" />
@@ -234,11 +268,11 @@ export default function Dashboard() {
               <div className="glow-dot" />
             </div>
             <h2 className="text-xl md:text-2xl font-display font-bold text-text-primary">
-              Build faster with <span className="text-gradient-violet">PromptPalace</span>
+              <span className="text-gradient-violet">Agentic City OS</span> — Your AI Execution Workspace
             </h2>
             <p className="text-sm text-text-secondary mt-1 font-body">
-              Last session: Metaplex metadata upload â€” Step 2 in progress.
-              Works with <span className="text-violet-400 font-mono">ChatGPT, Claude, Gemini, Perplexity</span>
+              8 districts active. Loop Engine ready. PromptPalace online. â€” Step 2 in progress.
+              Runs with <span className="text-violet-400 font-mono">ChatGPT, Claude, Gemini, Perplexity</span>
             </p>
           </div>
           <div className="flex gap-2">
@@ -272,7 +306,7 @@ export default function Dashboard() {
 
       {/* AI OS Steps */}
       <div>
-        <div className="pp-label mb-3">PROMPTPALACE START FLOW</div>
+        <div className="pp-label mb-3">AGENTIC CITY OS — EXECUTION FLOW</div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {STEP_CARDS.map(card => (
             <Link

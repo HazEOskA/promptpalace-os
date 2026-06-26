@@ -8,14 +8,20 @@ const PAGE_META: Record<string, { title: string; subtitle: string }> = {
   '/': { title: 'Dashboard', subtitle: 'AI OS â€” Execution Workspace' },
   '/prompts': { title: 'Prompt Library', subtitle: 'Browse & deploy production prompts' },
   '/trending': { title: 'Trending Prompts', subtitle: 'Top performers ranked by usage & saves' },
-  '/builder': { title: 'Project Builder Bot', subtitle: 'Turn an idea into a ready-to-use AI prompt pack' },
+  '/builder': { title: 'Project Builder', subtitle: 'AI module scaffold and prompt assembly' },
   '/workflows': { title: 'Workflow Generator', subtitle: 'Assemble multi-step AI workflows' },
-  '/context': { title: 'Context Recovery', subtitle: 'Step 0 â€” Last 5 Message Lock & Continuity' },
+  '/context': { title: 'Context Recovery', subtitle: 'Step 0 — Last 5 Message Lock & Continuity' },
+  '/loop': { title: 'Loop Engine', subtitle: 'Structured phase-by-phase AI execution' },
+  '/registry': { title: 'Agent Registry', subtitle: 'Registered agents and execution catalog' },
+  '/skills': { title: 'Skills Registry', subtitle: 'Active skill modules and capabilities' },
+  '/plugins': { title: 'Plugins / MCP', subtitle: 'Model Context Protocol integrations' },
+  '/playbooks': { title: 'Playbooks', subtitle: 'Curated operator execution playbooks' },
+  '/n8n': { title: 'n8n Candidates', subtitle: 'Automation draft templates — not live integrations' },
 }
 
 export default function Header({ onMenuToggle }: HeaderProps) {
   const { pathname } = useLocation()
-  const meta = PAGE_META[pathname] ?? { title: 'PromptPalace OS', subtitle: '' }
+  const meta = PAGE_META[pathname] ?? { title: 'Agentic City OS', subtitle: '' }
   const now = new Date()
   const timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false })
   const dateStr = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })

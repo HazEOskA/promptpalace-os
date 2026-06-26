@@ -15,6 +15,8 @@ import StackDetailPage from '../pages/StackDetailPage'
 import AssistantPage from '../pages/AssistantPage'
 import ProfilePage from '../pages/ProfilePage'
 import SavedPage from '../pages/SavedPage'
+import LoopEnginePage from '../pages/LoopEnginePage'
+import DistrictPage from '../pages/DistrictPage'
 
 export default function App() {
   return (
@@ -35,6 +37,12 @@ export default function App() {
         <Route path="/builder" element={<ProjectBuilderPage />} />
         <Route path="/workflows" element={<WorkflowGeneratorPage />} />
         <Route path="/context" element={<ContextRecoveryPage />} />
+        <Route path="/loop" element={<LoopEnginePage />} />
+        <Route path="/registry" element={<DistrictPage />} />
+        <Route path="/skills" element={<DistrictPage />} />
+        <Route path="/plugins" element={<DistrictPage />} />
+        <Route path="/playbooks" element={<DistrictPage />} />
+        <Route path="/n8n" element={<DistrictPage />} />
       </Route>
     </Routes>
   )

@@ -11,6 +11,7 @@ interface NavItem {
 
 const PRIMARY_NAV: NavItem[] = [
   { to: '/', icon: 'â¬¡', label: 'Dashboard' },
+  { to: '/loop', icon: '↺', label: 'Loop Engine', badge: 'NEW', badgeColor: 'bg-violet-500/20 text-violet-400' },
   { to: '/trending', icon: 'â†‘', label: 'Trending', badge: 'HOT', badgeColor: 'bg-rose-500/20 text-rose-400' },
   { to: '/categories', icon: 'â—ˆ', label: 'Categories' },
   { to: '/stacks', icon: 'â¬Ÿ', label: 'Stacks', badge: '10', badgeColor: 'bg-violet-500/20 text-violet-400' },
@@ -99,11 +100,11 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
         {/* Logo */}
         <div className="h-14 flex items-center gap-3 px-5 border-b border-border">
           <div className="w-7 h-7 rounded-lg bg-violet-600 flex items-center justify-center text-white text-xs font-mono font-bold">
-            PP
+            AC
           </div>
           <div>
             <div className="text-sm font-display font-semibold text-text-primary leading-none">
-              PromptPalace
+              Agentic City OS
             </div>
             <div className="text-[10px] font-mono text-violet-400 mt-0.5">OS v0.1 BETA</div>
           </div>
@@ -113,12 +114,12 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
         <div className="px-4 py-3 border-b border-border">
           <div className="flex items-center gap-2 text-xs">
             <div className="glow-dot" />
-            <span className="font-mono text-emerald-400">PROMPTPALACE READY</span>
+            <span className="font-mono text-emerald-400">AGENTIC CITY OS READY</span>
           </div>
           <div className="mt-1.5 flex items-center gap-1.5 text-[10px] font-mono text-text-muted">
             <span className="step-0">START</span>
             <span>â†’</span>
-            <span className="text-violet-400">Prompt Packs Ready</span>
+            <span className="text-violet-400">Districts Online</span>
           </div>
         </div>
 
