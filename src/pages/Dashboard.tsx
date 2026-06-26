@@ -19,21 +19,21 @@ const DISTRICTS = [
 ]
 
 const STATS = [
-  { label: 'Total Prompts', value: ALL_PROMPTS.length.toString(), delta: 'Production-ready', color: 'violet', icon: 'â—ˆ' },
-  { label: 'Categories', value: '20', delta: 'All domains', color: 'cyan', icon: 'â¬Ÿ' },
-  { label: 'Active Skills', value: '4', delta: 'of 8 loaded', color: 'amber', icon: 'âš¡' },
-  { label: 'Workflow Templates', value: '3', delta: 'Ready to use', color: 'emerald', icon: 'âŸ³' },
+  { label: 'Total Prompts', value: ALL_PROMPTS.length.toString(), delta: 'Production-ready', color: 'violet', icon: '#' },
+  { label: 'Categories', value: '20', delta: 'All domains', color: 'cyan', icon: '[]' },
+  { label: 'Active Skills', value: '4', delta: 'of 8 loaded', color: 'amber', icon: '!' },
+  { label: 'Workflow Templates', value: '3', delta: 'Ready to use', color: 'emerald', icon: '>>' },
 ]
 
 const QUICK_CATEGORIES = [
   { id: 'coding',      label: 'Coding',      icon: '{ }', color: 'text-cyan-400',   border: 'hover:border-cyan-500/40' },
-  { id: 'writing',     label: 'Writing',     icon: 'âœ',  color: 'text-pink-400',   border: 'hover:border-pink-500/40' },
-  { id: 'marketing',   label: 'Marketing',   icon: 'â†—',  color: 'text-rose-400',   border: 'hover:border-rose-500/40' },
-  { id: 'ai-personas', label: 'AI Personas', icon: 'â¬¡',  color: 'text-violet-400', border: 'hover:border-violet-500/40' },
-  { id: 'creative',    label: 'Creative',    icon: 'âœ¦',  color: 'text-orange-400', border: 'hover:border-orange-500/40' },
-  { id: 'analysis',    label: 'Analysis',    icon: 'âŠŸ',  color: 'text-blue-400',   border: 'hover:border-blue-500/40' },
-  { id: 'business',    label: 'Business',    icon: 'â—†',  color: 'text-amber-400',  border: 'hover:border-amber-500/40' },
-  { id: 'learning',    label: 'Learning',    icon: 'â—Ž',  color: 'text-teal-400',   border: 'hover:border-teal-500/40' },
+  { id: 'writing',     label: 'Writing',     icon: 'Aa',  color: 'text-pink-400',   border: 'hover:border-pink-500/40' },
+  { id: 'marketing',   label: 'Marketing',   icon: '+',  color: 'text-rose-400',   border: 'hover:border-rose-500/40' },
+  { id: 'ai-personas', label: 'AI Personas', icon: '[o]',  color: 'text-violet-400', border: 'hover:border-violet-500/40' },
+  { id: 'creative',    label: 'Creative',    icon: '~',  color: 'text-orange-400', border: 'hover:border-orange-500/40' },
+  { id: 'analysis',    label: 'Analysis',    icon: '##',  color: 'text-blue-400',   border: 'hover:border-blue-500/40' },
+  { id: 'business',    label: 'Business',    icon: '$',  color: 'text-amber-400',  border: 'hover:border-amber-500/40' },
+  { id: 'learning',    label: 'Learning',    icon: 'O',  color: 'text-teal-400',   border: 'hover:border-teal-500/40' },
 ]
 
 const STEP_CARDS = [
@@ -213,7 +213,7 @@ export default function Dashboard() {
         <div className="flex items-center justify-between mb-3">
           <div className="pp-section-title">Browse by Category</div>
           <Link to="/prompts" className="text-xs font-mono text-violet-400 hover:text-violet-300 transition-colors">
-            Full library ({ALL_PROMPTS.length} prompts) â†’
+            Full library ({ALL_PROMPTS.length} prompts)
           </Link>
         </div>
         <div className="grid grid-cols-4 sm:grid-cols-8 gap-2">
@@ -264,25 +264,23 @@ export default function Dashboard() {
           <div className="flex-1">
             <div className="flex items-center gap-2 mb-1">
               <span className="step-0">STEP 0</span>
-              <span className="text-text-muted text-xs font-mono">â†’ CONTEXT RECOVERED</span>
+              <span className="text-text-muted text-xs font-mono">CONTEXT RECOVERED</span>
               <div className="glow-dot" />
             </div>
             <h2 className="text-xl md:text-2xl font-display font-bold text-text-primary">
               <span className="text-gradient-violet">Agentic City OS</span> — Your AI Execution Workspace
             </h2>
             <p className="text-sm text-text-secondary mt-1 font-body">
-              8 districts active. Loop Engine ready. PromptPalace online. â€” Step 2 in progress.
+              8 districts active. Loop Engine ready. PromptPalace online.
               Runs with <span className="text-violet-400 font-mono">ChatGPT, Claude, Gemini, Perplexity</span>
             </p>
           </div>
           <div className="flex gap-2">
             <Link to="/builder" className="pp-btn-primary text-sm">
-              <span>â—Ž</span>
-              <span>Open Builder</span>
+              Open Builder
             </Link>
             <Link to="/context" className="pp-btn-secondary text-sm">
-              <span>âŒ¥</span>
-              <span>How It Works</span>
+              How It Works
             </Link>
           </div>
         </div>
@@ -335,7 +333,7 @@ export default function Dashboard() {
           <div className="flex items-center justify-between mb-3">
             <div className="pp-section-title">Trending Prompts</div>
             <Link to="/trending" className="text-xs font-mono text-violet-400 hover:text-violet-300 transition-colors">
-              View all â†’
+              View all
             </Link>
           </div>
           <div className="space-y-2">
@@ -344,13 +342,13 @@ export default function Dashboard() {
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-1">
                     <span className="pp-badge-violet">{p.category}</span>
-                    <span className="text-xs font-mono text-rose-400">ðŸ”¥ {p.trendingScore}</span>
+                    <span className="text-xs font-mono text-rose-400">HOT {p.trendingScore}</span>
                   </div>
                   <div className="text-sm font-display font-semibold text-text-primary line-clamp-1">{p.title}</div>
                   <p className="text-xs text-text-secondary mt-0.5 line-clamp-2 font-body">{p.description}</p>
                   <div className="flex items-center gap-3 mt-2 text-xs font-mono text-text-muted">
-                    <span>â†‘ {formatNumber(p.uses)} uses</span>
-                    <span>â˜… {formatNumber(p.saves)} saves</span>
+                    <span>^ {formatNumber(p.uses)} uses</span>
+                    <span>* {formatNumber(p.saves)} saves</span>
                     <span className="pp-badge-cyan">{p.model}</span>
                   </div>
                 </div>
@@ -358,7 +356,7 @@ export default function Dashboard() {
                   onClick={() => handleCopy(p.id, p.content)}
                   className="shrink-0 text-xs font-mono px-3 py-1.5 rounded-lg border transition-all duration-150 border-border hover:border-violet-500/50 text-text-muted hover:text-violet-400"
                 >
-                  {copiedId === p.id ? 'âœ“ Copied' : 'Copy'}
+                  {copiedId === p.id ? 'OK Copied' : 'Copy'}
                 </button>
               </div>
             ))}
@@ -373,7 +371,7 @@ export default function Dashboard() {
             <div className="flex items-center justify-between mb-3">
               <div className="pp-section-title">Active Skills</div>
               <Link to="/builder" className="text-xs font-mono text-cyan-400 hover:text-cyan-300 transition-colors">
-                Manage â†’
+                Manage
               </Link>
             </div>
             <div className="space-y-2">
@@ -382,7 +380,7 @@ export default function Dashboard() {
                   <span className="text-lg w-6 text-center">{skill.icon}</span>
                   <div className="flex-1 min-w-0">
                     <div className="text-xs font-body font-medium text-text-primary">{skill.name}</div>
-                    <div className="text-[10px] font-mono text-text-muted truncate">{skill.capabilities.slice(0, 3).join(' Â· ')}</div>
+                    <div className="text-[10px] font-mono text-text-muted truncate">{skill.capabilities.slice(0, 3).join(' / ')}</div>
                   </div>
                   <div className="flex gap-0.5">
                     {Array.from({ length: 5 }).map((_, i) => (
@@ -402,7 +400,7 @@ export default function Dashboard() {
             <div className="flex items-center justify-between mb-3">
               <div className="pp-section-title">Quick Workflows</div>
               <Link to="/workflows" className="text-xs font-mono text-amber-400 hover:text-amber-300 transition-colors">
-                All â†’
+                All
               </Link>
             </div>
             <div className="space-y-2">
@@ -412,10 +410,10 @@ export default function Dashboard() {
                   to="/workflows"
                   className="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-bg-elevated border border-border hover:border-border-strong hover:bg-bg-elevated/80 transition-all group"
                 >
-                  <span className="text-amber-400 text-lg">âŸ³</span>
+                  <span className="text-amber-400 text-xs font-mono">[WF]</span>
                   <div className="flex-1 min-w-0">
                     <div className="text-xs font-body font-medium text-text-primary group-hover:text-amber-300 transition-colors line-clamp-1">{wf.name}</div>
-                    <div className="text-[10px] font-mono text-text-muted">{wf.steps.length} steps Â· {formatNumber(wf.uses)} uses</div>
+                    <div className="text-[10px] font-mono text-text-muted">{wf.steps.length} steps / {formatNumber(wf.uses)} uses</div>
                   </div>
                 </Link>
               ))}

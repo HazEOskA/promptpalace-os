@@ -10,21 +10,21 @@ interface NavItem {
 }
 
 const PRIMARY_NAV: NavItem[] = [
-  { to: '/', icon: 'â¬¡', label: 'Dashboard' },
+  { to: '/', icon: '[o]', label: 'Dashboard' },
   { to: '/loop', icon: '↺', label: 'Loop Engine', badge: 'NEW', badgeColor: 'bg-violet-500/20 text-violet-400' },
-  { to: '/trending', icon: 'â†‘', label: 'Trending', badge: 'HOT', badgeColor: 'bg-rose-500/20 text-rose-400' },
-  { to: '/categories', icon: 'â—ˆ', label: 'Categories' },
-  { to: '/stacks', icon: 'â¬Ÿ', label: 'Stacks', badge: '10', badgeColor: 'bg-violet-500/20 text-violet-400' },
-  { to: '/workflows', icon: 'âŸ³', label: 'Workflows' },
-  { to: '/assistant', icon: 'â—‰', label: 'Assistant', badge: 'AI', badgeColor: 'bg-cyan-500/20 text-cyan-400' },
-  { to: '/submit', icon: 'âŠ¹', label: 'Submit Prompt' },
-  { to: '/saved', icon: 'â˜…', label: 'Saved' },
+  { to: '/trending', icon: '^', label: 'Trending', badge: 'HOT', badgeColor: 'bg-rose-500/20 text-rose-400' },
+  { to: '/categories', icon: '#', label: 'Categories' },
+  { to: '/stacks', icon: '[]', label: 'Stacks', badge: '10', badgeColor: 'bg-violet-500/20 text-violet-400' },
+  { to: '/workflows', icon: '>>', label: 'Workflows' },
+  { to: '/assistant', icon: '@', label: 'Assistant', badge: 'AI', badgeColor: 'bg-cyan-500/20 text-cyan-400' },
+  { to: '/submit', icon: '+', label: 'Submit Prompt' },
+  { to: '/saved', icon: '*', label: 'Saved' },
 ]
 
 const TOOLS_NAV: NavItem[] = [
-  { to: '/prompts', icon: 'â‰¡', label: 'Full Library' },
-  { to: '/builder', icon: 'â—Ž', label: 'Project Builder' },
-  { to: '/context', icon: 'âŒ¥', label: 'Context Recovery' },
+  { to: '/prompts', icon: '=', label: 'Full Library' },
+  { to: '/builder', icon: 'O', label: 'Project Builder' },
+  { to: '/context', icon: '~', label: 'Context Recovery' },
 ]
 
 interface SidebarProps {
@@ -118,7 +118,7 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
           </div>
           <div className="mt-1.5 flex items-center gap-1.5 text-[10px] font-mono text-text-muted">
             <span className="step-0">START</span>
-            <span>â†’</span>
+            <span>/</span>
             <span className="text-violet-400">Districts Online</span>
           </div>
         </div>

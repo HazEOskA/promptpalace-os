@@ -5,7 +5,7 @@ interface HeaderProps {
 }
 
 const PAGE_META: Record<string, { title: string; subtitle: string }> = {
-  '/': { title: 'Dashboard', subtitle: 'AI OS â€” Execution Workspace' },
+  '/': { title: 'Dashboard', subtitle: 'AI OS - Execution Workspace' },
   '/prompts': { title: 'Prompt Library', subtitle: 'Browse & deploy production prompts' },
   '/trending': { title: 'Trending Prompts', subtitle: 'Top performers ranked by usage & saves' },
   '/builder': { title: 'Project Builder', subtitle: 'AI module scaffold and prompt assembly' },
@@ -58,17 +58,16 @@ export default function Header({ onMenuToggle }: HeaderProps) {
         {/* Execution step indicator */}
         <div className="hidden sm:flex items-center gap-1.5 bg-bg-elevated border border-border rounded-lg px-3 py-1.5">
           <span className="step-0">FIND</span>
-          <span className="text-text-muted text-xs">â†’</span>
+          <span className="text-text-muted text-xs px-1">/</span>
           <span className="step-05">COPY</span>
-          <span className="text-text-muted text-xs">â†’</span>
+          <span className="text-text-muted text-xs px-1">/</span>
           <span className="step-1">ADAPT</span>
-          <span className="text-text-muted text-xs">â†’</span>
+          <span className="text-text-muted text-xs px-1">/</span>
           <span className="step-2">RUN</span>
         </div>
 
         {/* Quick action */}
         <button className="pp-btn-primary text-xs py-1.5 px-3 hidden sm:flex">
-          <span>âŸ³</span>
           <span>Start Flow</span>
         </button>
       </div>
