@@ -17,6 +17,9 @@ import ProfilePage from '../pages/ProfilePage'
 import SavedPage from '../pages/SavedPage'
 import LoopEnginePage from '../pages/LoopEnginePage'
 import DistrictPage from '../pages/DistrictPage'
+import AgentRegistryPage from '../pages/AgentRegistryPage'
+import SkillsRegistryPage from '../pages/SkillsRegistryPage'
+import PluginsMCPPage from '../pages/PluginsMCPPage'
 
 export default function App() {
   return (
@@ -38,9 +41,9 @@ export default function App() {
         <Route path="/workflows" element={<WorkflowGeneratorPage />} />
         <Route path="/context" element={<ContextRecoveryPage />} />
         <Route path="/loop" element={<LoopEnginePage />} />
-        <Route path="/registry" element={<DistrictPage />} />
-        <Route path="/skills" element={<DistrictPage />} />
-        <Route path="/plugins" element={<DistrictPage />} />
+        <Route path="/registry" element={<AgentRegistryPage />} />
+        <Route path="/skills" element={<SkillsRegistryPage />} />
+        <Route path="/plugins" element={<PluginsMCPPage />} />
         <Route path="/playbooks" element={<DistrictPage />} />
         <Route path="/n8n" element={<DistrictPage />} />
       </Route>
