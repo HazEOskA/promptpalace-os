@@ -20,6 +20,9 @@ import DistrictPage from '../pages/DistrictPage'
 import AgentRegistryPage from '../pages/AgentRegistryPage'
 import SkillsRegistryPage from '../pages/SkillsRegistryPage'
 import PluginsMCPPage from '../pages/PluginsMCPPage'
+import WorkflowRegistryPage from '../pages/WorkflowRegistryPage'
+import PlaybooksPage from '../pages/PlaybooksPage'
+import N8nCandidatesPage from '../pages/N8nCandidatesPage'
 
 export default function App() {
   return (
@@ -38,14 +41,15 @@ export default function App() {
         <Route path="/profile/:username" element={<ProfilePage />} />
         <Route path="/prompts" element={<PromptLibraryPage />} />
         <Route path="/builder" element={<ProjectBuilderPage />} />
-        <Route path="/workflows" element={<WorkflowGeneratorPage />} />
+        <Route path="/workflows" element={<WorkflowRegistryPage />} />
+        <Route path="/workflows/generator" element={<WorkflowGeneratorPage />} />
         <Route path="/context" element={<ContextRecoveryPage />} />
         <Route path="/loop" element={<LoopEnginePage />} />
         <Route path="/registry" element={<AgentRegistryPage />} />
         <Route path="/skills" element={<SkillsRegistryPage />} />
         <Route path="/plugins" element={<PluginsMCPPage />} />
-        <Route path="/playbooks" element={<DistrictPage />} />
-        <Route path="/n8n" element={<DistrictPage />} />
+        <Route path="/playbooks" element={<PlaybooksPage />} />
+        <Route path="/n8n" element={<N8nCandidatesPage />} />
       </Route>
     </Routes>
   )
