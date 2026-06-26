@@ -115,13 +115,13 @@ export default function Dashboard() {
             </p>
 
             <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-              <Link to="/builder" className="pp-btn-primary w-full justify-center sm:w-auto">
-                <Wrench className="h-4 w-4" />
-                <span>Open Builder</span>
+              <Link to="/launch-agent" className="pp-btn-primary w-full justify-center sm:w-auto">
+                <Bot className="h-4 w-4" />
+                <span>Launch Agent</span>
               </Link>
-              <Link to="/loop" className="pp-btn-secondary w-full justify-center sm:w-auto">
-                <RefreshCw className="h-4 w-4" />
-                <span>Start a Loop</span>
+              <Link to="/registry" className="pp-btn-secondary w-full justify-center sm:w-auto">
+                <LayoutGrid className="h-4 w-4" />
+                <span>Explore Districts</span>
               </Link>
             </div>
 

@@ -23,6 +23,7 @@ import PluginsMCPPage from '../pages/PluginsMCPPage'
 import WorkflowRegistryPage from '../pages/WorkflowRegistryPage'
 import PlaybooksPage from '../pages/PlaybooksPage'
 import N8nCandidatesPage from '../pages/N8nCandidatesPage'
+import LaunchAgentPage from '../pages/LaunchAgentPage'
 
 export default function App() {
   return (
@@ -50,6 +51,7 @@ export default function App() {
         <Route path="/plugins" element={<PluginsMCPPage />} />
         <Route path="/playbooks" element={<PlaybooksPage />} />
         <Route path="/n8n" element={<N8nCandidatesPage />} />
+        <Route path="/launch-agent" element={<LaunchAgentPage />} />
       </Route>
     </Routes>
   )

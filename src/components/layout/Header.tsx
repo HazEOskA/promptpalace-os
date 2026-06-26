@@ -18,6 +18,7 @@ const PAGE_META: Record<string, { title: string; subtitle: string }> = {
   '/plugins': { title: 'Plugins / MCP', subtitle: 'Model Context Protocol integrations' },
   '/playbooks': { title: 'Playbooks', subtitle: 'Curated operator execution playbooks' },
   '/n8n': { title: 'n8n Candidates', subtitle: 'Automation draft templates — not live integrations' },
+  '/launch-agent': { title: 'Launch Agent', subtitle: 'Generate an Agent Deployment Packet' },
 }
 
 export default function Header({ onMenuToggle }: HeaderProps) {
