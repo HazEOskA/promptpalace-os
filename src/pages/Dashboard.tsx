@@ -4,7 +4,7 @@ import type { LucideIcon } from 'lucide-react'
 import {
   ArrowRight, CheckCircle2, Copy, GitBranch, Sparkles, Zap,
   FileText, LayoutGrid, Code2, PenLine, Megaphone, Bot, Palette,
-  BarChart2, Briefcase, GraduationCap,
+  BarChart2, Briefcase, GraduationCap, RefreshCw, Wrench,
 } from 'lucide-react'
 import { PROMPTS } from '../data/prompts'
 import { ALL_PROMPTS } from '../data/index'
@@ -44,39 +44,39 @@ const QUICK_CATEGORIES: Array<{ id: string; label: string; icon: LucideIcon; col
 const STEP_CARDS = [
   {
     step: 'START',
-    label: 'Find the Right Prompt',
-    desc: 'Browse trending and categorized prompts for your task.',
-    status: 'DONE',
+    label: 'Pick a District',
+    desc: 'Navigate to the module that fits your task — agents, skills, loops, or workflows.',
+    status: 'READY',
     statusColor: 'text-emerald-400',
     cls: 'step-0',
-    link: '/context',
+    link: '/registry',
   },
   {
-    step: 'GUIDE',
-    label: 'Understand the Use Case',
-    desc: 'Check the description, model fit, difficulty, tags, and expected output.',
-    status: 'DONE',
+    step: 'PLAN',
+    label: 'Build a Loop',
+    desc: 'Select a loop template or design a custom phase-by-phase execution sequence.',
+    status: 'READY',
     statusColor: 'text-emerald-400',
     cls: 'step-05',
-    link: '/context',
+    link: '/loop',
   },
   {
-    step: 'COPY',
-    label: 'Copy and Customize',
-    desc: 'Copy the prompt and replace placeholders with your own context.',
-    status: 'READY',
+    step: 'BUILD',
+    label: 'Execute with Builder',
+    desc: 'Load your context, activate skills, and run the Builder Agent phase by phase.',
+    status: 'ACTIVE',
     statusColor: 'text-amber-400',
     cls: 'step-1',
     link: '/builder',
   },
   {
-    step: 'RUN',
-    label: 'Run in Your AI Tool',
-    desc: 'Paste into ChatGPT, Claude, Gemini, Perplexity, or your preferred LLM.',
+    step: 'SHIP',
+    label: 'Deploy and Validate',
+    desc: 'Preview-deploy, run the QA Playbook, and confirm before merge.',
     status: 'WAITING',
     statusColor: 'text-text-muted',
     cls: 'step-2',
-    link: '/builder',
+    link: '/playbooks',
   },
 ]
 
@@ -100,44 +100,48 @@ export default function Dashboard() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(139,92,246,0.22),transparent_32%),radial-gradient(circle_at_85%_15%,rgba(6,182,212,0.14),transparent_28%)] pointer-events-none" />
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-violet-400/80 to-transparent" />
 
-        <div className="relative grid grid-cols-1 gap-7 lg:grid-cols-[minmax(0,3fr)_minmax(320px,2fr)] lg:items-center">
+        <div className="relative grid grid-cols-1 gap-7 lg:grid-cols-[minmax(0,3fr)_minmax(300px,2fr)] lg:items-center">
           <div className="min-w-0">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-500/20 bg-cyan-900/30 px-3 py-1 text-xs font-mono uppercase tracking-widest text-cyan-400">
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-violet-500/20 bg-violet-900/30 px-3 py-1 text-xs font-mono uppercase tracking-widest text-violet-400">
               <Sparkles className="h-3.5 w-3.5" />
-              Mission Control
+              Agentic City OS
             </div>
 
             <h1 className="max-w-3xl text-3xl font-display font-bold leading-tight text-text-primary sm:text-4xl lg:text-5xl">
-              Your AI Prompt Command Center.
+              Run the city of your <span className="text-gradient-violet">AI work.</span>
             </h1>
             <p className="mt-4 max-w-2xl text-sm leading-6 text-text-secondary sm:text-base">
-              Stop guessing prompts. Deploy battle-tested AI workflows, ready-to-use execution modules, and curated automation frameworks designed for operators, builders, and scale.
+              Organize agents, skills, plugins, workflows, loops, prompts and playbooks into one execution workspace.
             </p>
 
             <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-              <Link to="/trending" className="pp-btn-primary w-full justify-center sm:w-auto">
-                <Zap className="h-4 w-4" />
-                <span>Explore Trending</span>
+              <Link to="/builder" className="pp-btn-primary w-full justify-center sm:w-auto">
+                <Wrench className="h-4 w-4" />
+                <span>Open Builder</span>
               </Link>
-              <Link to="/prompts" className="pp-btn-secondary w-full justify-center sm:w-auto">
-                <GitBranch className="h-4 w-4" />
-                <span>Browse Library</span>
+              <Link to="/loop" className="pp-btn-secondary w-full justify-center sm:w-auto">
+                <RefreshCw className="h-4 w-4" />
+                <span>Start a Loop</span>
               </Link>
             </div>
 
-            <p className="mt-3 text-xs font-mono text-text-muted">
-              No setup required. Copy, adjust, and dominate your AI workflows.
-            </p>
+            <div className="mt-3 flex items-center gap-3 text-xs font-mono text-text-muted">
+              <Link to="/registry" className="hover:text-violet-400 transition-colors">Explore Districts</Link>
+              <span>/</span>
+              <Link to="/playbooks" className="hover:text-teal-400 transition-colors">Read Playbooks</Link>
+              <span>/</span>
+              <Link to="/workflows" className="hover:text-orange-400 transition-colors">View Workflows</Link>
+            </div>
 
             <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
               {[
-                ['01', 'Browse & Search', 'Filter by category, difficulty, or keyword to find the right prompt.'],
-                ['02', 'Expand & Copy', 'Click any prompt to reveal the full text. Copy with one click.'],
-                ['03', 'Fill & Execute', 'Replace [BRACKETED] variables with your context and paste into any AI.'],
+                ['01', 'Pick a District', 'Navigate to agents, skills, loops, workflows, or playbooks.'],
+                ['02', 'Load Your Tools', 'Activate skills, connect plugins, and prepare your prompt stack.'],
+                ['03', 'Execute the Loop', 'Run the Loop Engine or deploy with the Builder phase by phase.'],
               ].map(([step, title, desc]) => (
                 <div key={step} className="rounded-lg border border-border bg-bg-elevated/80 p-3">
                   <div className="mb-2 flex items-center gap-2">
-                    <span className="font-mono text-xs font-semibold text-cyan-400">[{step}]</span>
+                    <span className="font-mono text-xs font-semibold text-violet-400">[{step}]</span>
                     <span className="h-px flex-1 bg-border" />
                   </div>
                   <div className="text-sm font-display font-semibold text-text-primary">{title}</div>
@@ -147,65 +151,40 @@ export default function Dashboard() {
             </div>
           </div>
 
+          {/* District OS Status panel */}
           <div className="relative min-w-0">
-            <div className="rounded-xl border border-border-strong bg-bg-elevated/90 p-3 shadow-violet">
+            <div className="rounded-xl border border-border-strong bg-bg-elevated/90 p-4 shadow-violet">
               <div className="mb-3 flex items-center justify-between">
                 <div>
-                  <div className="text-xs font-mono uppercase tracking-widest text-text-muted">Workflow Chain</div>
-                  <div className="text-sm font-display font-semibold text-text-primary">Launch Sequence</div>
+                  <div className="text-xs font-mono uppercase tracking-widest text-text-muted">City OS</div>
+                  <div className="text-sm font-display font-semibold text-text-primary">District Status</div>
                 </div>
                 <div className="flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-900/40 px-2 py-1 text-[10px] font-mono text-emerald-400">
                   <CheckCircle2 className="h-3 w-3" />
-                  READY
+                  8 ONLINE
                 </div>
               </div>
 
-              <div className="space-y-2.5">
-                <div className="rounded-lg border border-violet-500/25 bg-bg-surface p-3">
-                  <div className="mb-2 flex items-center justify-between gap-3">
-                    <div className="text-sm font-display font-semibold text-text-primary">District Module</div>
-                    <span className="pp-badge-violet">Trending</span>
-                  </div>
-                  <div className="flex flex-wrap gap-1.5">
-                    {['SaaS', 'Growth', 'Coding'].map(tag => (
-                      <span key={tag} className="rounded-md border border-cyan-500/20 bg-cyan-900/30 px-2 py-1 text-[10px] font-mono text-cyan-400">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+              <div className="space-y-1.5">
+                {DISTRICTS.map(d => (
+                  <Link
+                    key={d.slug}
+                    to={d.to}
+                    className="flex items-center gap-2.5 rounded-lg px-2.5 py-2 hover:bg-bg-overlay transition-colors group"
+                  >
+                    <span className={`text-sm shrink-0 ${d.color}`}>{d.icon}</span>
+                    <span className="flex-1 text-xs font-body font-medium text-text-secondary group-hover:text-text-primary transition-colors truncate">{d.label}</span>
+                    <ArrowRight className="h-3 w-3 text-text-muted group-hover:text-violet-400 transition-colors shrink-0" />
+                  </Link>
+                ))}
+              </div>
 
-                <div className="flex justify-center text-text-muted">
-                  <ArrowRight className="h-4 w-4 rotate-90" />
-                </div>
-
-                <div className="rounded-lg border border-cyan-500/20 bg-bg-surface p-3">
-                  <div className="mb-2 flex items-center justify-between gap-3">
-                    <div className="text-sm font-display font-semibold text-text-primary">Prompt Payload</div>
-                    <div className="inline-flex items-center gap-1 rounded-md border border-border bg-bg-elevated px-2 py-1 text-[10px] font-mono text-text-secondary">
-                      <Copy className="h-3 w-3" />
-                      Copy
-                    </div>
-                  </div>
-                  <div className="rounded-md bg-bg-base/80 p-2 font-mono text-[11px] leading-relaxed text-text-secondary">
-                    Build a launch plan for <span className="text-violet-400">{'{{target_audience}}'}</span> using <span className="text-cyan-400">{'{{product_core}}'}</span> as the conversion engine.
-                  </div>
-                </div>
-
-                <div className="flex justify-center text-text-muted">
-                  <ArrowRight className="h-4 w-4 rotate-90" />
-                </div>
-
-                <div className="rounded-lg border border-emerald-500/20 bg-emerald-900/10 p-3">
-                  <div className="mb-2 flex items-center gap-2">
-                    <div className="glow-dot" />
-                    <div className="text-sm font-display font-semibold text-emerald-400">Output Ready</div>
-                  </div>
-                  <div className="space-y-1.5">
-                    <div className="h-2 rounded-full bg-emerald-400/60" />
-                    <div className="h-2 w-5/6 rounded-full bg-cyan-400/30" />
-                    <div className="h-2 w-2/3 rounded-full bg-violet-400/30" />
-                  </div>
+              <div className="mt-3 pt-3 border-t border-border flex items-center justify-between">
+                <span className="text-[10px] font-mono text-text-muted">8 districts active</span>
+                <div className="flex gap-1">
+                  {[...Array(8)].map((_, i) => (
+                    <div key={i} className="w-1.5 h-1.5 rounded-full bg-emerald-400/70" />
+                  ))}
                 </div>
               </div>
             </div>
