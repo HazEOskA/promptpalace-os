@@ -1,30 +1,35 @@
-﻿import { NavLink, useLocation } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
+import type { LucideIcon } from 'lucide-react'
+import {
+  LayoutDashboard, RefreshCw, TrendingUp, Hash, Layers,
+  GitBranch, Bot, Plus, Bookmark, BookOpen, Wrench, RotateCcw,
+} from 'lucide-react'
 import { cn } from '../../lib/utils'
 
 interface NavItem {
   to: string
-  icon: string
+  icon: LucideIcon
   label: string
   badge?: string
   badgeColor?: string
 }
 
 const PRIMARY_NAV: NavItem[] = [
-  { to: '/', icon: '[o]', label: 'Dashboard' },
-  { to: '/loop', icon: '↺', label: 'Loop Engine', badge: 'NEW', badgeColor: 'bg-violet-500/20 text-violet-400' },
-  { to: '/trending', icon: '^', label: 'Trending', badge: 'HOT', badgeColor: 'bg-rose-500/20 text-rose-400' },
-  { to: '/categories', icon: '#', label: 'Categories' },
-  { to: '/stacks', icon: '[]', label: 'Stacks', badge: '10', badgeColor: 'bg-violet-500/20 text-violet-400' },
-  { to: '/workflows', icon: '>>', label: 'Workflows' },
-  { to: '/assistant', icon: '@', label: 'Assistant', badge: 'AI', badgeColor: 'bg-cyan-500/20 text-cyan-400' },
-  { to: '/submit', icon: '+', label: 'Submit Prompt' },
-  { to: '/saved', icon: '*', label: 'Saved' },
+  { to: '/', icon: LayoutDashboard, label: 'Dashboard' },
+  { to: '/loop', icon: RefreshCw, label: 'Loop Engine', badge: 'NEW', badgeColor: 'bg-violet-500/20 text-violet-400' },
+  { to: '/trending', icon: TrendingUp, label: 'Trending', badge: 'HOT', badgeColor: 'bg-rose-500/20 text-rose-400' },
+  { to: '/categories', icon: Hash, label: 'Categories' },
+  { to: '/stacks', icon: Layers, label: 'Stacks', badge: '10', badgeColor: 'bg-violet-500/20 text-violet-400' },
+  { to: '/workflows', icon: GitBranch, label: 'Workflows' },
+  { to: '/assistant', icon: Bot, label: 'Assistant', badge: 'AI', badgeColor: 'bg-cyan-500/20 text-cyan-400' },
+  { to: '/submit', icon: Plus, label: 'Submit Prompt' },
+  { to: '/saved', icon: Bookmark, label: 'Saved' },
 ]
 
 const TOOLS_NAV: NavItem[] = [
-  { to: '/prompts', icon: '=', label: 'Full Library' },
-  { to: '/builder', icon: 'O', label: 'Project Builder' },
-  { to: '/context', icon: '~', label: 'Context Recovery' },
+  { to: '/prompts', icon: BookOpen, label: 'Full Library' },
+  { to: '/builder', icon: Wrench, label: 'Project Builder' },
+  { to: '/context', icon: RotateCcw, label: 'Context Recovery' },
 ]
 
 interface SidebarProps {
@@ -50,24 +55,25 @@ function NavItems({ items, onClose }: { items: NavItem[]; onClose: () => void })
             )
           }
         >
-          {({ isActive }) => (
-            <>
-              <span
-                className={cn(
-                  'text-base w-5 text-center transition-colors',
-                  isActive ? 'text-violet-400' : 'text-text-muted group-hover:text-text-secondary'
+          {({ isActive }) => {
+            const Icon = item.icon
+            return (
+              <>
+                <Icon
+                  className={cn(
+                    'h-4 w-4 shrink-0 transition-colors',
+                    isActive ? 'text-violet-400' : 'text-text-muted group-hover:text-text-secondary'
+                  )}
+                />
+                <span className="flex-1 font-body font-medium text-sm">{item.label}</span>
+                {item.badge && (
+                  <span className={cn('text-[10px] font-mono font-semibold px-1.5 py-0.5 rounded', item.badgeColor)}>
+                    {item.badge}
+                  </span>
                 )}
-              >
-                {item.icon}
-              </span>
-              <span className="flex-1 font-body font-medium text-sm">{item.label}</span>
-              {item.badge && (
-                <span className={cn('text-[10px] font-mono font-semibold px-1.5 py-0.5 rounded', item.badgeColor)}>
-                  {item.badge}
-                </span>
-              )}
-            </>
-          )}
+              </>
+            )
+          }}
         </NavLink>
       ))}
     </>
@@ -149,5 +155,3 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
     </>
   )
 }
-
-

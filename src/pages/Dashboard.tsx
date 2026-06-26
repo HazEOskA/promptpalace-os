@@ -1,6 +1,11 @@
 ﻿import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, CheckCircle2, Copy, GitBranch, Sparkles, Zap } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
+import {
+  ArrowRight, CheckCircle2, Copy, GitBranch, Sparkles, Zap,
+  FileText, LayoutGrid, Code2, PenLine, Megaphone, Bot, Palette,
+  BarChart2, Briefcase, GraduationCap,
+} from 'lucide-react'
 import { PROMPTS } from '../data/prompts'
 import { ALL_PROMPTS } from '../data/index'
 import { WORKFLOW_TEMPLATES } from '../data/workflows'
@@ -18,22 +23,22 @@ const DISTRICTS = [
   { slug: 'n8n',       label: 'n8n Candidates',   icon: '⊹', color: 'text-pink-400',   border: 'hover:border-pink-500/40',   to: '/n8n' },
 ]
 
-const STATS = [
-  { label: 'Total Prompts', value: ALL_PROMPTS.length.toString(), delta: 'Production-ready', color: 'violet', icon: '#' },
-  { label: 'Categories', value: '20', delta: 'All domains', color: 'cyan', icon: '[]' },
-  { label: 'Active Skills', value: '4', delta: 'of 8 loaded', color: 'amber', icon: '!' },
-  { label: 'Workflow Templates', value: '3', delta: 'Ready to use', color: 'emerald', icon: '>>' },
+const STATS: Array<{ label: string; value: string; delta: string; color: string; icon: LucideIcon }> = [
+  { label: 'Total Prompts', value: ALL_PROMPTS.length.toString(), delta: 'Production-ready', color: 'violet', icon: FileText },
+  { label: 'Categories', value: '20', delta: 'All domains', color: 'cyan', icon: LayoutGrid },
+  { label: 'Active Skills', value: '4', delta: 'of 8 loaded', color: 'amber', icon: Zap },
+  { label: 'Workflow Templates', value: '3', delta: 'Ready to use', color: 'emerald', icon: GitBranch },
 ]
 
-const QUICK_CATEGORIES = [
-  { id: 'coding',      label: 'Coding',      icon: '{ }', color: 'text-cyan-400',   border: 'hover:border-cyan-500/40' },
-  { id: 'writing',     label: 'Writing',     icon: 'Aa',  color: 'text-pink-400',   border: 'hover:border-pink-500/40' },
-  { id: 'marketing',   label: 'Marketing',   icon: '+',  color: 'text-rose-400',   border: 'hover:border-rose-500/40' },
-  { id: 'ai-personas', label: 'AI Personas', icon: '[o]',  color: 'text-violet-400', border: 'hover:border-violet-500/40' },
-  { id: 'creative',    label: 'Creative',    icon: '~',  color: 'text-orange-400', border: 'hover:border-orange-500/40' },
-  { id: 'analysis',    label: 'Analysis',    icon: '##',  color: 'text-blue-400',   border: 'hover:border-blue-500/40' },
-  { id: 'business',    label: 'Business',    icon: '$',  color: 'text-amber-400',  border: 'hover:border-amber-500/40' },
-  { id: 'learning',    label: 'Learning',    icon: 'O',  color: 'text-teal-400',   border: 'hover:border-teal-500/40' },
+const QUICK_CATEGORIES: Array<{ id: string; label: string; icon: LucideIcon; color: string; border: string }> = [
+  { id: 'coding',      label: 'Coding',      icon: Code2,         color: 'text-cyan-400',   border: 'hover:border-cyan-500/40' },
+  { id: 'writing',     label: 'Writing',     icon: PenLine,       color: 'text-pink-400',   border: 'hover:border-pink-500/40' },
+  { id: 'marketing',   label: 'Marketing',   icon: Megaphone,     color: 'text-rose-400',   border: 'hover:border-rose-500/40' },
+  { id: 'ai-personas', label: 'AI Personas', icon: Bot,           color: 'text-violet-400', border: 'hover:border-violet-500/40' },
+  { id: 'creative',    label: 'Creative',    icon: Palette,       color: 'text-orange-400', border: 'hover:border-orange-500/40' },
+  { id: 'analysis',    label: 'Analysis',    icon: BarChart2,     color: 'text-blue-400',   border: 'hover:border-blue-500/40' },
+  { id: 'business',    label: 'Business',    icon: Briefcase,     color: 'text-amber-400',  border: 'hover:border-amber-500/40' },
+  { id: 'learning',    label: 'Learning',    icon: GraduationCap, color: 'text-teal-400',   border: 'hover:border-teal-500/40' },
 ]
 
 const STEP_CARDS = [
@@ -217,19 +222,22 @@ export default function Dashboard() {
           </Link>
         </div>
         <div className="grid grid-cols-4 sm:grid-cols-8 gap-2">
-          {QUICK_CATEGORIES.map(cat => (
-            <Link
-              key={cat.id}
-              to="/prompts"
-              className={cn(
-                'flex flex-col items-center gap-1.5 p-3 rounded-lg bg-bg-elevated border border-border transition-all group text-center',
-                cat.border
-              )}
-            >
-              <span className={`text-lg ${cat.color} group-hover:scale-110 transition-transform`}>{cat.icon}</span>
-              <span className="text-[10px] font-body font-medium text-text-secondary group-hover:text-text-primary transition-colors leading-tight">{cat.label}</span>
-            </Link>
-          ))}
+          {QUICK_CATEGORIES.map(cat => {
+            const CatIcon = cat.icon
+            return (
+              <Link
+                key={cat.id}
+                to="/prompts"
+                className={cn(
+                  'flex flex-col items-center gap-1.5 p-3 rounded-lg bg-bg-elevated border border-border transition-all group text-center',
+                  cat.border
+                )}
+              >
+                <CatIcon className={`h-5 w-5 ${cat.color} group-hover:scale-110 transition-transform`} />
+                <span className="text-[10px] font-body font-medium text-text-secondary group-hover:text-text-primary transition-colors leading-tight">{cat.label}</span>
+              </Link>
+            )
+          })}
         </div>
       </div>
 
@@ -288,18 +296,21 @@ export default function Dashboard() {
 
       {/* Stats grid */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-        {STATS.map(stat => (
-          <div key={stat.label} className="pp-card-hover">
-            <div className="flex items-start justify-between mb-3">
-              <span className="text-lg text-text-muted">{stat.icon}</span>
-              <span className={`text-xs font-mono text-${stat.color}-400 bg-${stat.color}-900/30 px-1.5 py-0.5 rounded`}>
-                {stat.delta}
-              </span>
+        {STATS.map(stat => {
+          const StatIcon = stat.icon
+          return (
+            <div key={stat.label} className="pp-card-hover">
+              <div className="flex items-start justify-between mb-3">
+                <StatIcon className="h-5 w-5 text-text-muted" />
+                <span className={`text-xs font-mono text-${stat.color}-400 bg-${stat.color}-900/30 px-1.5 py-0.5 rounded`}>
+                  {stat.delta}
+                </span>
+              </div>
+              <div className={`text-2xl font-display font-bold text-${stat.color}-400`}>{stat.value}</div>
+              <div className="text-xs font-body text-text-muted mt-0.5">{stat.label}</div>
             </div>
-            <div className={`text-2xl font-display font-bold text-${stat.color}-400`}>{stat.value}</div>
-            <div className="text-xs font-body text-text-muted mt-0.5">{stat.label}</div>
-          </div>
-        ))}
+          )
+        })}
       </div>
 
       {/* AI OS Steps */}
