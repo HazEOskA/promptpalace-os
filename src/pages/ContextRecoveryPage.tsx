@@ -22,9 +22,9 @@ const STEP_OUTPUTS: Record<string, string> = {
 
 Scanning last 5 messages...
 
-Project Name:    WOLF Protocol
-Last Step:       2 (Metaplex metadata)
-Active Workspace: CryptowolfOS
+Project Name:    GTM Launch Build
+Last Step:       2 (Landing page headlines)
+Active Workspace: AgenticOS Workspace
 Framework:       TypeScript + Vite
 Execution Mode:  BUILD
 Blockers:        None
@@ -36,12 +36,12 @@ Blockers:        None
 
 Scanning for active workspace signals...
 
-Workspace:       CryptowolfOS
+Workspace:       AgenticOS Workspace
 Framework:       TypeScript + Vite
 Build System:    Vite 5.0
 Language:        TypeScript (strict)
 Runtime:         Node.js 20 / Bun
-Open Context:    src/deploy/tokenLaunch.ts
+Open Context:    src/loops/gtm-launch-sequence.ts
 
 ✓ Workspace detected.
 ✓ Framework identified.
@@ -365,10 +365,10 @@ export default function ContextRecoveryPage() {
             </div>
             <div className="p-3 space-y-2">
               {[
-                { label: 'PROJECT', value: 'WOLF Protocol', color: 'text-violet-400' },
+                { label: 'PROJECT', value: 'GTM Launch Build', color: 'text-violet-400' },
                 { label: 'MODE', value: 'BUILD', color: 'text-cyan-400' },
-                { label: 'LAST STEP', value: '2 — Metaplex', color: 'text-amber-400' },
-                { label: 'WORKSPACE', value: 'CryptowolfOS', color: 'text-text-primary' },
+                { label: 'LAST STEP', value: '2 — Headlines', color: 'text-amber-400' },
+                { label: 'WORKSPACE', value: 'AgenticOS Workspace', color: 'text-text-primary' },
                 { label: 'FRAMEWORK', value: 'TypeScript + Vite', color: 'text-text-primary' },
                 { label: 'BLOCKERS', value: 'None', color: 'text-emerald-400' },
               ].map(row => (

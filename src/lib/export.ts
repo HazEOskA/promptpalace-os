@@ -22,7 +22,7 @@ ${prompt.content}
 
 ---
 
-*Exported from PromptPalace OS — ${new Date().toLocaleDateString()}*
+*Exported from Agentic City OS — ${new Date().toLocaleDateString()}*
 `
 }
 
@@ -47,7 +47,7 @@ ${steps}
 
 ---
 
-*Exported from PromptPalace OS — ${new Date().toLocaleDateString()}*
+*Exported from Agentic City OS — ${new Date().toLocaleDateString()}*
 `
 }
 
@@ -84,7 +84,7 @@ ${messages.map((m, i) => `### Message ${i + 1}\n\n${m}`).join('\n\n---\n\n')}
 
 ---
 
-*PromptPalace OS Context Recovery Export*
+*Agentic City OS Context Recovery Export*
 `
   downloadFile(content, `context-snapshot-${Date.now()}.md`)
 }

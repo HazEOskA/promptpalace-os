@@ -7,6 +7,18 @@ export type PromptCategory =
   | 'marketing'
   | 'solana'
   | 'ai-agent'
+  | 'content'
+  | 'automation'
+  | 'productivity'
+  | 'sales'
+  | 'seo'
+  | 'social-media'
+  | 'startups'
+  | 'career'
+  | 'analysis'
+  | 'learning'
+  | 'creative'
+  | 'ai-personas'
 
 export type PromptDifficulty = 'beginner' | 'intermediate' | 'advanced'
 
@@ -26,6 +38,23 @@ export interface Prompt {
   createdAt: string
   estimatedTokens: number
   model: string
+  whyTrending?: string
+  bestFor?: string[]
+  // Extended fields
+  slug?: string
+  useCase?: string
+  authorUsername?: string
+  likes?: number
+  copies?: number
+  views?: number
+  trendScore?: number
+  featured?: boolean
+  agentReady?: boolean
+  builderTool?: boolean
+  modelCompatibility?: string[]
+  estimatedTime?: string
+  outputType?: string
+  updatedAt?: string
 }
 
 export const PROMPTS: Prompt[] = [
@@ -59,10 +88,12 @@ Output as executable TypeScript scaffold with @solana/web3.js.`,
     saves: 891,
     trending: true,
     trendingScore: 97,
-    author: 'wolf_dev',
+    author: 'bartek.dev',
     createdAt: '2024-11-15',
     estimatedTokens: 800,
     model: 'claude-3-5-sonnet',
+    whyTrending: '2,800+ builders use this for pump.fun & Raydium launches. Ships full TypeScript scaffolds in one prompt.',
+    bestFor: ['Claude', 'ChatGPT'],
   },
   {
     id: 'p002',
@@ -101,6 +132,8 @@ Output: structured response with progress bar and next action.`,
     createdAt: '2024-11-20',
     estimatedTokens: 600,
     model: 'claude-3-5-sonnet',
+    whyTrending: 'The #1 context-recovery protocol. Used daily in AI-assisted builds to eliminate lost progress and broken sessions.',
+    bestFor: ['Claude'],
   },
   {
     id: 'p003',
@@ -133,6 +166,8 @@ Format: Notion-ready table + action checklist.`,
     createdAt: '2024-11-18',
     estimatedTokens: 700,
     model: 'gpt-4o',
+    whyTrending: 'GTM teams run this at the start of every sprint. Outputs Notion-ready growth playbooks with ICE-scored experiments.',
+    bestFor: ['ChatGPT', 'Claude', 'Gemini'],
   },
   {
     id: 'p004',
@@ -170,6 +205,8 @@ Include: prop types, state diagram, performance notes (memo/callback/lazy), acce
     createdAt: '2024-11-10',
     estimatedTokens: 550,
     model: 'claude-3-5-sonnet',
+    whyTrending: 'Frontend teams paste this before every new feature. Eliminates architecture debates and ships scalable component systems fast.',
+    bestFor: ['Claude', 'ChatGPT'],
   },
   {
     id: 'p005',
@@ -201,6 +238,8 @@ Output: JSON + narrative report + recommended monitoring alerts.`,
     createdAt: '2024-11-12',
     estimatedTokens: 650,
     model: 'gpt-4o',
+    whyTrending: 'Alpha hunters run this on every new wallet they find. 2,200+ on-chain analysts call it essential for finding copy-trade signals.',
+    bestFor: ['ChatGPT', 'Gemini'],
   },
   {
     id: 'p006',
@@ -234,6 +273,8 @@ Tone: peer-to-peer, crypto-native, no corporate speak.`,
     createdAt: '2024-11-08',
     estimatedTokens: 400,
     model: 'claude-3-5-sonnet',
+    whyTrending: 'Farcaster community managers swear by this for cold outreach. Peer-to-peer tone converts 3× better than corporate templates.',
+    bestFor: ['Claude', 'ChatGPT'],
   },
   {
     id: 'p007',
@@ -272,6 +313,8 @@ Tone: peer-to-peer, crypto-native, no corporate speak.`,
     createdAt: '2024-11-05',
     estimatedTokens: 900,
     model: 'claude-3-5-sonnet',
+    whyTrending: 'Dev teams run this before every mainnet deploy. Catches reentrancy and PDA seed bugs that manual review misses.',
+    bestFor: ['Claude'],
   },
   {
     id: 'p008',
@@ -321,6 +364,8 @@ Workflow description: [WORKFLOW_OR_IDEA]
     createdAt: '2024-11-14',
     estimatedTokens: 1000,
     model: 'gpt-4o',
+    whyTrending: 'Startup founders use this at ideation stage. Replaces 10+ hours of PRD writing with a shipping-ready product spec.',
+    bestFor: ['ChatGPT', 'Claude', 'Gemini'],
   },
   {
     id: 'p009',
@@ -356,6 +401,8 @@ Include: export type, props interface, JSDoc comment.`,
     createdAt: '2024-11-09',
     estimatedTokens: 500,
     model: 'claude-3-5-sonnet',
+    whyTrending: 'Design engineers save 2-3 hours per component. Accessibility-first output with skeleton, error, and empty states built in.',
+    bestFor: ['Claude', 'ChatGPT'],
   },
   {
     id: 'p010',
@@ -399,6 +446,8 @@ Include: export type, props interface, JSDoc comment.`,
     createdAt: '2024-11-07',
     estimatedTokens: 750,
     model: 'gpt-4o',
+    whyTrending: 'Strategy teams run this quarterly. Outputs a 2×2 positioning matrix plus a 90-day action plan in Notion-ready format.',
+    bestFor: ['ChatGPT', 'Gemini'],
   },
 ]
 

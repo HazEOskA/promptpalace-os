@@ -1,21 +1,29 @@
-import { useLocation } from 'react-router-dom'
+﻿import { useLocation } from 'react-router-dom'
 
 interface HeaderProps {
   onMenuToggle: () => void
 }
 
 const PAGE_META: Record<string, { title: string; subtitle: string }> = {
-  '/': { title: 'Dashboard', subtitle: 'AI OS — Execution Workspace' },
+  '/': { title: 'Dashboard', subtitle: 'AI OS - Execution Workspace' },
   '/prompts': { title: 'Prompt Library', subtitle: 'Browse & deploy production prompts' },
   '/trending': { title: 'Trending Prompts', subtitle: 'Top performers ranked by usage & saves' },
-  '/builder': { title: 'Project Builder Bot', subtitle: 'AI-powered project execution engine' },
-  '/workflows': { title: 'Workflow Generator', subtitle: 'Assemble multi-step AI workflows' },
+  '/builder': { title: 'Project Builder', subtitle: 'AI module scaffold and prompt assembly' },
+  '/workflows': { title: 'Workflow Registry', subtitle: 'Multi-step execution workflow catalog' },
+  '/workflows/generator': { title: 'Workflow Generator', subtitle: 'Assemble multi-step AI workflows' },
   '/context': { title: 'Context Recovery', subtitle: 'Step 0 — Last 5 Message Lock & Continuity' },
+  '/loop': { title: 'Loop Engine', subtitle: 'Structured phase-by-phase AI execution' },
+  '/registry': { title: 'Agent Registry', subtitle: 'Registered agents and execution catalog' },
+  '/skills': { title: 'Skills Registry', subtitle: 'Active skill modules and capabilities' },
+  '/plugins': { title: 'Plugins / MCP', subtitle: 'Model Context Protocol integrations' },
+  '/playbooks': { title: 'Playbooks', subtitle: 'Curated operator execution playbooks' },
+  '/n8n': { title: 'n8n Candidates', subtitle: 'Automation draft templates — not live integrations' },
+  '/launch-agent': { title: 'Launch Agent', subtitle: 'Generate an Agent Deployment Packet' },
 }
 
 export default function Header({ onMenuToggle }: HeaderProps) {
   const { pathname } = useLocation()
-  const meta = PAGE_META[pathname] ?? { title: 'PromptPalace OS', subtitle: '' }
+  const meta = PAGE_META[pathname] ?? { title: 'Agentic City OS', subtitle: '' }
   const now = new Date()
   const timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false })
   const dateStr = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
@@ -51,21 +59,22 @@ export default function Header({ onMenuToggle }: HeaderProps) {
 
         {/* Execution step indicator */}
         <div className="hidden sm:flex items-center gap-1.5 bg-bg-elevated border border-border rounded-lg px-3 py-1.5">
-          <span className="step-0">S0</span>
-          <span className="text-text-muted text-xs">→</span>
-          <span className="step-05">S0.5</span>
-          <span className="text-text-muted text-xs">→</span>
-          <span className="step-1">S1</span>
-          <span className="text-text-muted text-xs">→</span>
-          <span className="step-2">S2</span>
+          <span className="step-0">FIND</span>
+          <span className="text-text-muted text-xs px-1">/</span>
+          <span className="step-05">COPY</span>
+          <span className="text-text-muted text-xs px-1">/</span>
+          <span className="step-1">ADAPT</span>
+          <span className="text-text-muted text-xs px-1">/</span>
+          <span className="step-2">RUN</span>
         </div>
 
         {/* Quick action */}
         <button className="pp-btn-primary text-xs py-1.5 px-3 hidden sm:flex">
-          <span>⟳</span>
-          <span>New Session</span>
+          <span>Start Flow</span>
         </button>
       </div>
     </header>
   )
 }
+
+

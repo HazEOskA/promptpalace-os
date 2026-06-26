@@ -14,10 +14,10 @@ const INITIAL_MESSAGES: Message[] = [
     role: 'assistant',
     content: `▶ STEP 0 — CONTEXT RECOVERY
 
-Project detected: WOLF Protocol
-Last step: Metaplex metadata upload (Step 2)
+Project detected: GTM Launch Build
+Last step: Landing page headlines (Step 2)
 Framework: TypeScript + Vite
-Workspace: CryptowolfOS
+Workspace: AgenticOS Workspace
 Mode: BUILD
 
 ✓ Last 5 messages locked.
@@ -71,36 +71,21 @@ export default function ProjectBuilderPage() {
     } else {
       response = `▶ STEP 2 — BUILD / EXECUTE
 
-Resuming WOLF Protocol build.
-Context: Metaplex metadata upload pending.
+Resuming GTM Launch Build.
+Context: Landing page headline variants.
 
-\`\`\`typescript
-// Upload metadata to Irys
-import Irys from "@irys/sdk";
+\`\`\`
+// 5 Hero Headline Variants — B2B SaaS / CTO ICP
 
-const irys = new Irys({
-  url: "https://node1.irys.xyz",
-  token: "solana",
-  key: process.env.SOLANA_PRIVATE_KEY!,
-});
-
-const metadata = {
-  name: "WOLF",
-  symbol: "WOLF",
-  description: "WOLF Protocol SPL Token",
-  image: "https://arweave.net/[IMAGE_TX]",
-  attributes: [],
-};
-
-const tx = await irys.upload(JSON.stringify(metadata), {
-  tags: [{ name: "Content-Type", value: "application/json" }],
-});
-
-console.log("Metadata URI:", \`https://arweave.net/\${tx.id}\`);
+1. "Ship AI features your users actually ask for."
+2. "The AI layer your engineering team already wants."
+3. "Stop prompting. Start deploying."
+4. "From zero to production AI in one sprint."
+5. "Your AI OS. Your workflows. Your users."
 \`\`\`
 
-✓ Metadata upload script generated.
-Next: SPL token initialization with metadata URI.`
+✓ Headline variants generated.
+Next: CTA copy + value proposition bullets.`
     }
 
     setExecState(execEngine.getState())
@@ -123,14 +108,14 @@ Processing: "${userMsg}"
 
 Active Skills: ${[...activeSkillIds].map(id => SKILLS.find(s => s.id === id)?.name).filter(Boolean).join(', ')}
 
-Based on your request and the current project context (WOLF Protocol, TypeScript + Vite), here's my response:
+Based on your request and the current project context (GTM Launch Build, TypeScript + Vite), here's my response:
 
-The system has analyzed your instruction and mapped it to the current execution context. Your workspace (CryptowolfOS) is active with the Solana Architect skill enabled.
+The system has analyzed your instruction and mapped it to the current execution context. Your workspace (AgenticOS Workspace) is active with the relevant skill set enabled.
 
-\`\`\`typescript
+\`\`\`
 // Generated output for: "${userMsg}"
-// Context: WOLF Protocol | Step 2
-// Skill: Solana Architect + KARPATHY Coder
+// Context: GTM Launch Build | Step 2
+// Skills: ${[...activeSkillIds].map(id => SKILLS.find(s => s.id === id)?.name).filter(Boolean).slice(0, 2).join(' + ')}
 \`\`\`
 
 Next steps will be suggested based on this output.
@@ -166,7 +151,7 @@ Type another instruction or use a Quick Action to continue.`
           <div className="glow-dot" />
           <div className="flex-1">
             <div className="text-xs font-display font-semibold text-text-primary">Project Builder Bot</div>
-            <div className="text-[10px] font-mono text-text-muted">WOLF Protocol · BUILD mode · Context active</div>
+            <div className="text-[10px] font-mono text-text-muted">GTM Launch Build · BUILD mode · Context active</div>
           </div>
           <div className="flex items-center gap-1.5">
             <span className={stepCls[execState.phase.replace('step', '').replace('0', '0')] ?? 'step-0'}>

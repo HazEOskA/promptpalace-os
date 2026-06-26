@@ -1,26 +1,83 @@
 import { NavLink, useLocation } from 'react-router-dom'
+import type { LucideIcon } from 'lucide-react'
+import {
+  LayoutDashboard, RefreshCw, TrendingUp, Hash, Layers,
+  GitBranch, Bot, Plus, Bookmark, BookOpen, Wrench, RotateCcw,
+} from 'lucide-react'
 import { cn } from '../../lib/utils'
 
 interface NavItem {
   to: string
-  icon: string
+  icon: LucideIcon
   label: string
   badge?: string
   badgeColor?: string
 }
 
-const NAV_ITEMS: NavItem[] = [
-  { to: '/', icon: '⬡', label: 'Dashboard' },
-  { to: '/prompts', icon: '◈', label: 'Prompt Library', badge: '10', badgeColor: 'bg-violet-500/20 text-violet-400' },
-  { to: '/trending', icon: '↑', label: 'Trending', badge: 'HOT', badgeColor: 'bg-rose-500/20 text-rose-400' },
-  { to: '/builder', icon: '◎', label: 'Project Builder', badge: 'AI', badgeColor: 'bg-cyan-500/20 text-cyan-400' },
-  { to: '/workflows', icon: '⟳', label: 'Workflows', badge: '3', badgeColor: 'bg-amber-500/20 text-amber-400' },
-  { to: '/context', icon: '⌥', label: 'Context Recovery' },
+const PRIMARY_NAV: NavItem[] = [
+  { to: '/', icon: LayoutDashboard, label: 'Dashboard' },
+  { to: '/loop', icon: RefreshCw, label: 'Loop Engine', badge: 'NEW', badgeColor: 'bg-violet-500/20 text-violet-400' },
+  { to: '/trending', icon: TrendingUp, label: 'Trending', badge: 'HOT', badgeColor: 'bg-rose-500/20 text-rose-400' },
+  { to: '/categories', icon: Hash, label: 'Categories' },
+  { to: '/stacks', icon: Layers, label: 'Stacks', badge: '10', badgeColor: 'bg-violet-500/20 text-violet-400' },
+  { to: '/workflows', icon: GitBranch, label: 'Workflows' },
+  { to: '/assistant', icon: Bot, label: 'Assistant', badge: 'AI', badgeColor: 'bg-cyan-500/20 text-cyan-400' },
+  { to: '/submit', icon: Plus, label: 'Submit Prompt' },
+  { to: '/saved', icon: Bookmark, label: 'Saved' },
+]
+
+const TOOLS_NAV: NavItem[] = [
+  { to: '/prompts', icon: BookOpen, label: 'Full Library' },
+  { to: '/builder', icon: Wrench, label: 'Project Builder' },
+  { to: '/context', icon: RotateCcw, label: 'Context Recovery' },
 ]
 
 interface SidebarProps {
   open: boolean
   onClose: () => void
+}
+
+function NavItems({ items, onClose }: { items: NavItem[]; onClose: () => void }) {
+  return (
+    <>
+      {items.map(item => (
+        <NavLink
+          key={item.to}
+          to={item.to}
+          end={item.to === '/'}
+          onClick={() => onClose()}
+          className={({ isActive }) =>
+            cn(
+              'flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-all duration-150 group',
+              isActive
+                ? 'bg-violet-600/20 text-violet-300 border border-violet-500/30'
+                : 'text-text-secondary hover:text-text-primary hover:bg-bg-elevated border border-transparent'
+            )
+          }
+        >
+          {({ isActive }) => {
+            const Icon = item.icon
+            return (
+              <>
+                <Icon
+                  className={cn(
+                    'h-4 w-4 shrink-0 transition-colors',
+                    isActive ? 'text-violet-400' : 'text-text-muted group-hover:text-text-secondary'
+                  )}
+                />
+                <span className="flex-1 font-body font-medium text-sm">{item.label}</span>
+                {item.badge && (
+                  <span className={cn('text-[10px] font-mono font-semibold px-1.5 py-0.5 rounded', item.badgeColor)}>
+                    {item.badge}
+                  </span>
+                )}
+              </>
+            )
+          }}
+        </NavLink>
+      ))}
+    </>
+  )
 }
 
 export default function Sidebar({ open, onClose }: SidebarProps) {
@@ -49,11 +106,11 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
         {/* Logo */}
         <div className="h-14 flex items-center gap-3 px-5 border-b border-border">
           <div className="w-7 h-7 rounded-lg bg-violet-600 flex items-center justify-center text-white text-xs font-mono font-bold">
-            PP
+            AC
           </div>
           <div>
             <div className="text-sm font-display font-semibold text-text-primary leading-none">
-              PromptPalace
+              Agentic City OS
             </div>
             <div className="text-[10px] font-mono text-violet-400 mt-0.5">OS v0.1 BETA</div>
           </div>
@@ -63,53 +120,22 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
         <div className="px-4 py-3 border-b border-border">
           <div className="flex items-center gap-2 text-xs">
             <div className="glow-dot" />
-            <span className="font-mono text-emerald-400">SYSTEM ACTIVE</span>
+            <span className="font-mono text-emerald-400">AGENTIC CITY OS READY</span>
           </div>
           <div className="mt-1.5 flex items-center gap-1.5 text-[10px] font-mono text-text-muted">
-            <span className="step-0">STEP 0</span>
-            <span>→</span>
-            <span className="text-violet-400">WOLF Protocol</span>
+            <span className="step-0">START</span>
+            <span>/</span>
+            <span className="text-violet-400">Districts Online</span>
           </div>
         </div>
 
         {/* Navigation */}
-        <nav className="flex-1 px-3 py-4 space-y-0.5 overflow-y-auto">
+        <nav className="flex-1 px-3 py-4 space-y-0.5 overflow-y-auto scrollbar-none">
           <div className="pp-label mb-3 px-2">NAVIGATION</div>
-          {NAV_ITEMS.map(item => (
-            <NavLink
-              key={item.to}
-              to={item.to}
-              end={item.to === '/'}
-              onClick={() => onClose()}
-              className={({ isActive }) =>
-                cn(
-                  'flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-all duration-150 group',
-                  isActive
-                    ? 'bg-violet-600/20 text-violet-300 border border-violet-500/30'
-                    : 'text-text-secondary hover:text-text-primary hover:bg-bg-elevated border border-transparent'
-                )
-              }
-            >
-              {({ isActive }) => (
-                <>
-                  <span
-                    className={cn(
-                      'text-base w-5 text-center transition-colors',
-                      isActive ? 'text-violet-400' : 'text-text-muted group-hover:text-text-secondary'
-                    )}
-                  >
-                    {item.icon}
-                  </span>
-                  <span className="flex-1 font-body font-medium text-sm">{item.label}</span>
-                  {item.badge && (
-                    <span className={cn('text-[10px] font-mono font-semibold px-1.5 py-0.5 rounded', item.badgeColor)}>
-                      {item.badge}
-                    </span>
-                  )}
-                </>
-              )}
-            </NavLink>
-          ))}
+          <NavItems items={PRIMARY_NAV} onClose={onClose} />
+
+          <div className="pp-label mt-5 mb-3 px-2">TOOLS</div>
+          <NavItems items={TOOLS_NAV} onClose={onClose} />
         </nav>
 
         {/* Footer */}
