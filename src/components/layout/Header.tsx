@@ -15,7 +15,7 @@ const PAGE_META: Record<string, { title: string; subtitle: string }> = {
 
 export default function Header({ onMenuToggle }: HeaderProps) {
   const { pathname } = useLocation()
-  const meta = PAGE_META[pathname] ?? { title: 'PromptPalace OS', subtitle: '' }
+  const meta = PAGE_META[pathname] ?? { title: 'Agentic City OS', subtitle: '' }
   const now = new Date()
   const timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false })
   const dateStr = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
