@@ -49,11 +49,11 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
         {/* Logo */}
         <div className="h-14 flex items-center gap-3 px-5 border-b border-border">
           <div className="w-7 h-7 rounded-lg bg-violet-600 flex items-center justify-center text-white text-xs font-mono font-bold">
-            PP
+            AC
           </div>
           <div>
             <div className="text-sm font-display font-semibold text-text-primary leading-none">
-              PromptPalace
+              Agentic City
             </div>
             <div className="text-[10px] font-mono text-violet-400 mt-0.5">OS v0.1 BETA</div>
           </div>
