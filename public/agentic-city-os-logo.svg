@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Agentic City OS logo</title>
+  <desc id="desc">Neon cyberpunk letter A, city skyline and circuit network on a dark background.</desc>
+  <defs>
+    <linearGradient id="neon" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#b62cff"/>
+      <stop offset="0.48" stop-color="#7a5cff"/>
+      <stop offset="1" stop-color="#20d8ff"/>
+    </linearGradient>
+    <linearGradient id="neonVertical" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#7a18ff"/>
+      <stop offset="1" stop-color="#35efff"/>
+    </linearGradient>
+    <radialGradient id="bgGlow" cx="50%" cy="42%" r="58%">
+      <stop offset="0" stop-color="#241047"/>
+      <stop offset="0.5" stop-color="#070b1b"/>
+      <stop offset="1" stop-color="#020205"/>
+    </radialGradient>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid" width="46" height="46" patternUnits="userSpaceOnUse">
+      <path d="M46 0H0V46" fill="none" stroke="#37dfff" stroke-opacity=".12" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="1200" rx="74" fill="url(#bgGlow)"/>
+  <rect x="34" y="34" width="1132" height="1132" rx="58" fill="none" stroke="url(#neon)" stroke-opacity=".28" stroke-width="2"/>
+  <circle cx="600" cy="505" r="383" fill="none" stroke="url(#neon)" stroke-opacity=".28" stroke-width="4" stroke-dasharray="170 24 45 18" filter="url(#softGlow)"/>
+  <circle cx="600" cy="505" r="342" fill="none" stroke="#7f6bff" stroke-opacity=".18" stroke-width="2"/>
+
+  <g opacity=".85" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="#b52cff" stroke-width="8" fill="none" filter="url(#softGlow)">
+      <path d="M145 465h130l48-48h92"/>
+      <path d="M145 525h104l62 62h104"/>
+      <path d="M175 610h91l44-44"/>
+      <circle cx="145" cy="465" r="9" fill="#b52cff"/><circle cx="145" cy="525" r="9" fill="#b52cff"/><circle cx="175" cy="610" r="9" fill="#b52cff"/>
+    </g>
+    <g stroke="#24ddff" stroke-width="8" fill="none" filter="url(#softGlow)">
+      <path d="M1055 465H925l-48-48h-92"/>
+      <path d="M1055 525H951l-62 62H785"/>
+      <path d="M1025 610h-91l-44-44"/>
+      <circle cx="1055" cy="465" r="9" fill="#24ddff"/><circle cx="1055" cy="525" r="9" fill="#24ddff"/><circle cx="1025" cy="610" r="9" fill="#24ddff"/>
+    </g>
+  </g>
+
+  <g opacity=".75">
+    <path d="M310 700h580v118H310z" fill="url(#grid)" transform="skewX(-18)"/>
+    <path d="M600 695L333 822M600 695l267 127M600 695v142" stroke="url(#neon)" stroke-opacity=".35" stroke-width="3"/>
+  </g>
+
+  <g fill="url(#neonVertical)" opacity=".62" filter="url(#softGlow)">
+    <rect x="386" y="410" width="34" height="236" rx="4"/>
+    <rect x="432" y="354" width="46" height="292" rx="4"/>
+    <rect x="491" y="448" width="28" height="198" rx="4"/>
+    <rect x="538" y="317" width="44" height="329" rx="4"/>
+    <rect x="600" y="387" width="31" height="259" rx="4"/>
+    <rect x="650" y="334" width="48" height="312" rx="4"/>
+    <rect x="715" y="432" width="31" height="214" rx="4"/>
+    <rect x="760" y="368" width="43" height="278" rx="4"/>
+  </g>
+
+  <g fill="#07101f" opacity=".88">
+    <path d="M397 438h12v12h-12zm0 32h12v12h-12zm0 32h12v12h-12zm50-115h14v14h-14zm0 38h14v14h-14zm0 38h14v14h-14zm102-108h14v14h-14zm0 40h14v14h-14zm0 40h14v14h-14zm114-61h15v15h-15zm0 42h15v15h-15zm0 42h15v15h-15zm110-45h13v13h-13zm0 37h13v13h-13z"/>
+  </g>
+
+  <g filter="url(#glow)">
+    <path d="M600 170L270 790h158l75-144h194l75 144h158L600 170zm0 248l72 144H528l72-144z" fill="url(#neon)"/>
+  </g>
+  <path d="M600 170L270 790h158l75-144h194l75 144h158L600 170zm0 248l72 144H528l72-144z" fill="none" stroke="#fff" stroke-opacity=".34" stroke-width="4"/>
+
+  <g opacity=".9" fill="url(#neon)">
+    <circle cx="315" cy="273" r="7"/><circle cx="350" cy="250" r="4"/><circle cx="876" cy="274" r="6"/><circle cx="910" cy="300" r="4"/>
+    <path d="M285 325h95v8h-95zm530-2h102v8H815z"/>
+  </g>
+
+  <text x="600" y="952" text-anchor="middle" fill="url(#neon)" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="96" font-weight="800" letter-spacing="-4" filter="url(#softGlow)">Agentic City OS</text>
+  <path d="M320 1008h210l34 24h72l34-24h210" fill="none" stroke="url(#neon)" stroke-width="6" stroke-linecap="round" filter="url(#softGlow)"/>
+  <circle cx="600" cy="1032" r="13" fill="#141326" stroke="url(#neon)" stroke-width="7"/>
+  <text x="600" y="1086" text-anchor="middle" fill="#b5c8ff" fill-opacity=".72" font-family="JetBrains Mono,Consolas,monospace" font-size="25" letter-spacing="8">AI AGENT NETWORK • COMMAND LAYER</text>
+</svg>
